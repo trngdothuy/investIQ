@@ -1,4 +1,7 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
+{
+  /*import { Link } from '@tanstack/react-router'*/
+}
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 // __root.tsx is the layout that wraps ALL pages.
@@ -11,6 +14,8 @@ function RootLayout() {
   return (
     <>
       <nav className="flex gap-6 px-6 py-3 border-b border-border">
+        <h2 className="font-bold text-lg text-emerald-600">InvestIQ</h2>
+        {/*
         <Link
           to="/"
           activeProps={{ className: 'font-semibold' }}
@@ -30,8 +35,9 @@ function RootLayout() {
           activeProps={{ className: 'font-semibold' }}
           className="no-underline text-inherit"
         >
-          Users
+          Portfolio Dashboard
         </Link>
+        */}
       </nav>
 
       {/* Outlet renders the matched child route */}

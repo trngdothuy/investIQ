@@ -301,6 +301,29 @@ nav {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   opacity: 0.8;
 }
+.testimonial-stars {
+  color: #fbbf24; /* gold */
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 2px;
+}
+.rating-number {
+  margin-left: 10px;
+  padding: 2px 8px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  color: #0f172a;
+  background: rgba(16, 185, 129, 0.12);
+
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
 /* FOOTER */
 .footer {
   background: #0f172a;

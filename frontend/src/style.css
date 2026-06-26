@@ -20,7 +20,7 @@ body {
     BlinkMacSystemFont,
     sans-serif;
 
-  background: var(--background);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef7ff 40%, #f0fdf4 100%);
   color: var(--dark);
   line-height: 1.6;
 }

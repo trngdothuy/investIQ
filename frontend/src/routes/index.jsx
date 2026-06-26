@@ -81,6 +81,9 @@ function HomePage() {
 
         <div className="testimonials-grid">
           <div className="testimonial-card">
+            <div className="testimonial-stars">
+              ★★★★★ <span className="rating-number">5</span>
+            </div>
             <p>
               “InvestIQ helped me finally understand how diversified my portfolio actually was.
               Super clear and beginner-friendly.”
@@ -89,6 +92,9 @@ function HomePage() {
           </div>
 
           <div className="testimonial-card">
+            <div className="testimonial-stars">
+              ★★★★★ <span className="rating-number">5</span>
+            </div>
             <p>
               “I used to invest randomly. Now I actually understand risk and sector exposure. Game
               changer.”
@@ -97,6 +103,9 @@ function HomePage() {
           </div>
 
           <div className="testimonial-card">
+            <div className="testimonial-stars">
+              ★★★★☆ <span className="rating-number">4.8</span>{' '}
+            </div>
             <p>
               “The ESG insights make me feel more confident that my investments align with my
               values.”

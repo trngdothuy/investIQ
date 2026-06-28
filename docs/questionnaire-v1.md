@@ -1,4 +1,4 @@
-# Questionnaire Structure v1.1
+# Questionnaire Structure V2.0
 
 Since our  beginner retail investors, every question would answer one of these three objectives:
 * Understand who the investor is
@@ -131,29 +131,54 @@ I'm okay with some ups and downs for moderate growth	2
 I want strong growth, and I can handle big swings	3
 I want the highest possible returns, even with major volatility	4
 
-Batch 4 - Investment Values
+Batch 4 – Portfolio Values & Alignment
+This batch answers questions:
+- What does this investor care about?
+- What doesn't this investor want to own?
 
-11. Are there any causes or themes you want your investments to support? 
+11. What causes would you like your investments to support?
 Type: Multi-select (choose up to 5)
 
-* Clean energy & environment
-* Technology & innovation
-* Healthcare & wellness
-* Social equality & community
-* Education & opportunity 
+* Clean Energy & Sustainability
+* Technology & Innovation
+* Healthcare & Wellness
+* Education & Opportunity
 * Human Rights
+* Social Equality & Community
+* Renewable Energy
+* Ethical Business Practices
+* Local Economic Development
+* Financial Inclusion
+* Climate Action
+* Responsible Corporate Governance
 
 12. Are there any industries you would prefer to avoid investing in?  
 Type: Multi-select (choose all that apply)
 
-* Tobacco & alcohol
+* Tobacco 
+* Alcohol
 * Gambling
 * Weapons & defense
-* Fossil fuels (oil, gas, coal)
-* Fast fashion & low-wage labor
+* Fossil fuels
+* Ultra-processed Food & Drinks
+* Fast fashion
 * None, I have no restrictions
 
-13. Batch 5 - Portfolio Builder
+13. Which types of company practices would you like us to highlight if they appear in your portfolio?
+Type - Multi-select (Choose up to 3)
+
+* Human Rights Concerns
+* Animal Welfare Issues
+* Environmental Impact
+* Tax Avoidance
+* Fossil Fuel Activities
+* Tobacco Products
+* Weapons & Defense
+* Gambling Activities
+* ** Ultra-processed Food & Drinks
+* None of these
+
+14. Batch 5 - Portfolio Builder
 
 Instruction text shown to the user:
 Now let's add your investments. Type the name or ticker of each asset, and we'll help you fill in the details. You can add as many as you like.

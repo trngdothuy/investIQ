@@ -1,0 +1,1 @@
+import { analysePortfolio } from '../services/portfolioService.js'

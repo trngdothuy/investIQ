@@ -132,27 +132,18 @@ body {
 
 .features-section {
   max-width: 1200px;
-
   margin: 0 auto;
-
   padding: 4rem 1.5rem;
-
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
   gap: 1.5rem;
 }
 
 .feature-card {
   background: white;
-
   border-radius: 16px;
-
   padding: 2rem;
-
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-
   transition: all 0.3s ease;
 }
 
@@ -367,7 +358,6 @@ nav {
   flex-wrap: wrap;
 }
 
-/* brand */
 .footer-brand {
   max-width: 320px;
 }
@@ -433,16 +423,12 @@ nav {
   font-size: 0.9rem;
   color: #94a3b8;
 }
-.features-section {
-  padding: 5rem 1.5rem;
-}
 
 .why-section {
   padding: 5rem 1.5rem 6rem;
 }
 
 /* ── QUESTIONNAIRE ──────────────────────────────────────────────────────────
- * DaisyUI is not installed. This block defines design tokens and component
  * classes used across questionnaire batch1–batch5.
  * ─────────────────────────────────────────────────────────────────────────── */
 
@@ -451,11 +437,19 @@ nav {
   --base-200: #f1f5f9;
   --base-300: #e2e8f0;
   --base-content: #1e293b;
-  --primary-content: #ffffff;
   --error: #d01c1c;
+  --primary: #10b981;
+  --primary-content: #10b981;
 }
 
-/* ── Page shell ─────────────────────────────────────────────────────────── */
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
 .q-page {
   min-height: 100vh;
   background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
@@ -499,9 +493,6 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .q-card {
-    padding: 2rem 1.5rem;
-  }
   .q-main {
     padding: 2rem 1rem;
   }
@@ -654,7 +645,6 @@ nav {
   color: #64748b;
 }
 
-/* Breadcrumb container */
 .q-breadcrumbs {
   display: flex;
   flex-wrap: wrap;
@@ -825,4 +815,4 @@ nav {
     background: var(--base-200);
     transition: background 0.15s ease;
   }
-} /* end @layer components */
+}

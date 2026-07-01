@@ -164,7 +164,6 @@ export interface RootRouteChildren {
   QuestionnaireBatchesBatch3Route: typeof QuestionnaireBatchesBatch3Route
   QuestionnaireBatchesBatch4Route: typeof QuestionnaireBatchesBatch4Route
   QuestionnaireBatchesBatch5Route: typeof QuestionnaireBatchesBatch5Route
-  UsersRoute: typeof UsersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -253,7 +252,6 @@ const rootRouteChildren: RootRouteChildren = {
   QuestionnaireBatchesBatch3Route: QuestionnaireBatchesBatch3Route,
   QuestionnaireBatchesBatch4Route: QuestionnaireBatchesBatch4Route,
   QuestionnaireBatchesBatch5Route: QuestionnaireBatchesBatch5Route,
-  UsersRoute: UsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

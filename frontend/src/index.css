@@ -9,7 +9,6 @@
   --color-brand-dark: oklch(0.45 0.22 264); /* hover / active state     */
   --color-surface: oklch(0.98 0 264); /* card & panel background  */
   --color-muted: oklch(0.55 0.02 264); /* secondary / hint text    */
-  --color-border: oklch(0.88 0.01 264); /* dividers & card borders  */
 
   /* ── Typography ───────────────────────────────────────────────────────────
    * Swap the font-family value to use a web font.
@@ -447,16 +446,6 @@ nav {
  * classes used across questionnaire batch1–batch5.
  * ─────────────────────────────────────────────────────────────────────────── */
 
-@theme {
-  --color-primary: #10b981;
-  --color-primary-content: #ffffff;
-  --color-base-100: #ffffff;
-  --color-base-200: #f1f5f9;
-  --color-base-300: #e2e8f0;
-  --color-base-content: #1e293b;
-  --color-error: #ef4444;
-}
-
 :root {
   --base-100: #ffffff;
   --base-200: #f1f5f9;
@@ -472,21 +461,6 @@ nav {
   background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
   display: flex;
   flex-direction: column;
-}
-
-.q-nav {
-  padding: 1rem 2rem;
-  background: white;
-  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
-  box-shadow: 0 1px 8px rgba(16, 185, 129, 0.08);
-}
-
-.q-nav-brand {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #10b981;
-  text-decoration: none;
-  letter-spacing: -0.5px;
 }
 
 .q-main {
@@ -640,7 +614,6 @@ nav {
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
 .q-nav-actions {
@@ -689,11 +662,6 @@ nav {
   font-size: 0.75rem;
   color: #94a3b8;
   margin-bottom: 0.75rem;
-}
-
-/* Default */
-.q-breadcrumb-item span {
-  transition: all 0.2s ease;
 }
 
 @layer components {

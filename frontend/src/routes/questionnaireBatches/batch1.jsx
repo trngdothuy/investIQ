@@ -1,6 +1,9 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { useQuestionnaire } from '../../context/questionnaireContext'
+import QuestionnaireLayout from '../../components/questionnaireLayout'
+import ProgressHeader from '../../components/progressHeader'
+import QuestionBlock from '../../components/questionBlock'
 
 export const Route = createFileRoute('/questionnaireBatches/batch1')({
   component: Batch1,
@@ -27,10 +30,11 @@ function Batch1() {
   function handleAgeChange(e) {
     const val = e.target.value
     setAge(val)
+
     const num = Number(val)
-    if (val === '') {
-      setAgeError('')
-    } else if (!Number.isInteger(num) || num < 18 || num > 99) {
+
+    if (val === '') setAgeError('')
+    else if (!Number.isInteger(num) || num < 18 || num > 99) {
       setAgeError('Please enter a valid age between 18 and 99.')
     } else {
       setAgeError('')
@@ -38,73 +42,91 @@ function Batch1() {
   }
 
   const ageValid = age !== '' && ageError === ''
-  const canProceed = name.trim() !== '' && ageValid && situation !== ''
+  const canProceed = name.trim() && ageValid && situation
 
   function handleNext() {
     updateAnswers({ name, age: Number(age), situation })
     navigate({ to: '/questionnaireBatches/batch2' })
   }
 
+  const isComplete = canProceed
+
   return (
-    <div className="max-w-lg mx-auto py-12 px-6">
-      <p className="text-sm text-base-content/50 mb-1">Basic Information</p>
-      <p className="text-sm text-base-content/50 mb-4 italic">Step 1 of 5</p>
-      <progress className="progress progress-primary w-full mb-8" value={25} max={100} />
+    <QuestionnaireLayout>
+      <ProgressHeader title="Basic Information" step={1} totalSteps={5} />
 
       {/* Q1 */}
-      <div className="mb-6">
-        <label className="block font-medium mb-2">1. What should we call you?</label>
+      <QuestionBlock
+        title="What should we call you?"
+        helper="This helps us personalise your InvestIQ experience."
+        completed={!!name}
+      >
         <input
           type="text"
-          className="input input-bordered w-full"
+          className="input w-full"
           placeholder="e.g. Alex"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-      </div>
+      </QuestionBlock>
 
       {/* Q2 */}
-      <div className="mb-6">
-        <label className="block font-medium mb-2">2. How old are you?</label>
+      <QuestionBlock
+        title="How old are you?"
+        helper="We use this to personalise risk guidance and investment insights."
+        completed={ageValid}
+      >
         <input
           type="number"
-          className={`input input-bordered w-full ${ageError ? 'input-error' : ''}`}
-          placeholder="Enter your age (18-99)"
-          min={18}
-          max={99}
+          className={`input w-full ${ageError ? 'input-error' : ''}`}
+          placeholder="18–99"
           value={age}
           onChange={handleAgeChange}
         />
-        {ageError && <p className="text-error text-sm mt-1">{ageError}</p>}
-      </div>
+        {ageError && <p className="q-helper text-red-500">{ageError}</p>}
+      </QuestionBlock>
 
       {/* Q3 */}
-      <div className="mb-8">
-        <label className="block font-medium mb-3">
-          3. What best describes your current situation?
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {situationOptions.map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setSituation(option)}
-              className={`px-4 py-2 rounded border-2 text-sm cursor-pointer transition-all
-                ${
-                  situation === option
-                    ? 'border-primary bg-primary text-primary-content font-semibold'
-                    : 'border-base-300 hover:border-primary/50'
-                }`}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-      </div>
+      <QuestionBlock
+        title="What best describes your current situation?"
+        helper="Helps us understand your financial stability."
+        completed={!!situation}
+      >
+        <div className="q-options">
+          {situationOptions.map((option) => {
+            const isLong = option.length > 28
 
-      <button className="btn btn-primary w-full" disabled={!canProceed} onClick={handleNext}>
-        Next
-      </button>
-    </div>
+            return (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setSituation(option)}
+                className={`q-option-btn ${situation === option ? 'active' : ''}`}
+                style={{
+                  gridColumn: isLong ? 'span 2' : 'span 1',
+                }}
+              >
+                {option}
+              </button>
+            )
+          })}
+        </div>
+      </QuestionBlock>
+
+      {/* NAVIGATION */}
+      <div className="q-nav-actions mt-12 flex justify-between gap-4">
+        <button
+          type="button"
+          className="btn btn-outline w-full"
+          onClick={() => navigate({ to: '/questionnaire' })}
+        >
+          ← Back
+        </button>
+
+        <button className="btn btn-primary w-full" disabled={!canProceed} onClick={handleNext}>
+          {isComplete ? 'Continue →' : 'Next →'}
+        </button>
+      </div>
+    </QuestionnaireLayout>
   )
 }

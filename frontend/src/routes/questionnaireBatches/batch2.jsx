@@ -82,23 +82,23 @@ function Batch2() {
 
       {/* Q4 */}
       <div className="mb-6">
-        <label className="block font-medium mb-3">4. What is your main reason for investing?</label>
+        <p className="block font-medium mb-3">4. What is your main reason for investing?</p>
         <ChipGroup options={reasonOptions} selected={reason} onSelect={setReason} />
       </div>
 
       {/* Q5 */}
       <div className="mb-6">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           5. How long are you planning to keep your money invested?
-        </label>
+        </p>
         <ChipGroup options={horizonOptions} selected={horizon} onSelect={setHorizon} />
       </div>
 
       {/* Q6 */}
       <div className="mb-8">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           6. How often do you currently add money to your investments?
-        </label>
+        </p>
         <ChipGroup
           options={contributionOptions}
           selected={contributionFrequency}

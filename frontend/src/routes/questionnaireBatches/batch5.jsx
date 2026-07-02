@@ -9,7 +9,7 @@ export const Route = createFileRoute('/questionnaireBatches/batch5')({
 
 function Batch5() {
   const navigate = useNavigate()
-  const { answers, updateAnswers } = useQuestionnaire()
+  const { answers: _answers, updateAnswers } = useQuestionnaire()
 
   const [query, setQuery] = useState('')
   const defaultPortfolio = [
@@ -239,11 +239,11 @@ function Batch5() {
                       <div className="text-xs opacity-60">{row.ticker}</div>
                     </td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Stock type">
                       Stock
                     </td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Quantity input">
                       <input
                         type="number"
                         min="1"
@@ -255,7 +255,7 @@ function Batch5() {
                       />
                     </td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Buy price input">
                       <input
                         type="number"
                         min="0"
@@ -268,11 +268,11 @@ function Batch5() {
                       />
                     </td>
 
-                    <td className="text-center font-semibold">
+                    <td className="text-center font-semibold" aria-label="Investment value">
                       {investmentValue}
                     </td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Remove option">
                       <button
                         type="button"
                         className="btn btn-ghost btn-sm text-error"

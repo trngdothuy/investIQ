@@ -128,9 +128,9 @@ function Batch4() {
 
       {/* Q11 */}
       <div className="mb-8">
-        <label className="block font-medium mb-1">
+        <p className="block font-medium mb-1">
           11. Are there any industries you would prefer to avoid investing in?
-        </label>
+        </p>
         <p className="text-sm text-base-content/50 mb-3 italic">Choose all that apply</p>
         <div className="flex flex-wrap gap-2">
           {exclusionOptions.map((option) => (
@@ -153,9 +153,9 @@ function Batch4() {
 
       {/* Q12 */}
       <div className="mb-8">
-        <label className="block font-medium mb-1">
-          12. 12. Are there any categories you would like your investments to avoid violating?
-        </label>
+        <p className="block font-medium mb-1">
+          12. Are there any categories you would like your investments to avoid violating?
+        </p>
         <p className="text-sm text-base-content/50 mb-3 italic">Choose up to 3</p>
         <div className="flex flex-wrap gap-2">
           {highlightOptions.map((option) => {

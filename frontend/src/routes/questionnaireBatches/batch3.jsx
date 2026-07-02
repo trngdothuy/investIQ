@@ -111,33 +111,33 @@ function Batch3() {
 
       {/* Q7 */}
       <div className="mb-6">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           7. Imagine your portfolio drops 20% in value. What would you most likely do?
-        </label>
+        </p>
         <ChipGroup options={q7Options} selected={portfolioDrop} onSelect={setPortfolioDrop} />
       </div>
 
       {/* Q8 */}
       <div className="mb-6">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           8. How would you describe your comfort level with investment risk?
-        </label>
+        </p>
         <ChipGroup options={q8Options} selected={comfortLevel} onSelect={setComfortLevel} />
       </div>
 
       {/* Q9 */}
       <div className="mb-6">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           9. How would you feel if your portfolio's value swung up or down by 15% in a single month?
-        </label>
+        </p>
         <ChipGroup options={q9Options} selected={monthlySwing} onSelect={setMonthlySwing} />
       </div>
 
       {/* Q10 */}
       <div className="mb-8">
-        <label className="block font-medium mb-3">
+        <p className="block font-medium mb-3">
           10. When it comes to returns and risk, what matters most to you?
-        </label>
+        </p>
         <ChipGroup options={q10Options} selected={returnsPriority} onSelect={setReturnsPriority} />
       </div>
 

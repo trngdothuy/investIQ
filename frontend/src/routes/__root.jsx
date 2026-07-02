@@ -1,7 +1,5 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
-{
-  /*import { Link } from '@tanstack/react-router'*/
-}
+import { Link } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 // __root.tsx is the layout that wraps ALL pages.

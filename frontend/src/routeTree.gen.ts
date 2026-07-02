@@ -10,12 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as QuestionnaireRouteImport } from './routes/questionnaire'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as QuestionnaireBatchesBatch5RouteImport } from './routes/questionnaireBatches/batch5'
+import { Route as QuestionnaireBatchesBatch4RouteImport } from './routes/questionnaireBatches/batch4'
+import { Route as QuestionnaireBatchesBatch3RouteImport } from './routes/questionnaireBatches/batch3'
+import { Route as QuestionnaireBatchesBatch2RouteImport } from './routes/questionnaireBatches/batch2'
+import { Route as QuestionnaireBatchesBatch1RouteImport } from './routes/questionnaireBatches/batch1'
+import { Route as QuestionnaireBatchesBatch0RouteImport } from './routes/questionnaireBatches/batch0'
 
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireRoute = QuestionnaireRouteImport.update({
+  id: '/questionnaire',
+  path: '/questionnaire',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -28,35 +40,124 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuestionnaireBatchesBatch5Route = QuestionnaireBatchesBatch5RouteImport.update({
+  id: '/questionnaireBatches/batch5',
+  path: '/questionnaireBatches/batch5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch4Route = QuestionnaireBatchesBatch4RouteImport.update({
+  id: '/questionnaireBatches/batch4',
+  path: '/questionnaireBatches/batch4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch3Route = QuestionnaireBatchesBatch3RouteImport.update({
+  id: '/questionnaireBatches/batch3',
+  path: '/questionnaireBatches/batch3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch2Route = QuestionnaireBatchesBatch2RouteImport.update({
+  id: '/questionnaireBatches/batch2',
+  path: '/questionnaireBatches/batch2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch1Route = QuestionnaireBatchesBatch1RouteImport.update({
+  id: '/questionnaireBatches/batch1',
+  path: '/questionnaireBatches/batch1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch0Route = QuestionnaireBatchesBatch0RouteImport.update({
+  id: '/questionnaireBatches/batch0',
+  path: '/questionnaireBatches/batch0',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
   '/users': typeof UsersRoute
+  '/questionnaireBatches/batch0': typeof QuestionnaireBatchesBatch0Route
+  '/questionnaireBatches/batch1': typeof QuestionnaireBatchesBatch1Route
+  '/questionnaireBatches/batch2': typeof QuestionnaireBatchesBatch2Route
+  '/questionnaireBatches/batch3': typeof QuestionnaireBatchesBatch3Route
+  '/questionnaireBatches/batch4': typeof QuestionnaireBatchesBatch4Route
+  '/questionnaireBatches/batch5': typeof QuestionnaireBatchesBatch5Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
   '/users': typeof UsersRoute
+  '/questionnaireBatches/batch0': typeof QuestionnaireBatchesBatch0Route
+  '/questionnaireBatches/batch1': typeof QuestionnaireBatchesBatch1Route
+  '/questionnaireBatches/batch2': typeof QuestionnaireBatchesBatch2Route
+  '/questionnaireBatches/batch3': typeof QuestionnaireBatchesBatch3Route
+  '/questionnaireBatches/batch4': typeof QuestionnaireBatchesBatch4Route
+  '/questionnaireBatches/batch5': typeof QuestionnaireBatchesBatch5Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
   '/users': typeof UsersRoute
+  '/questionnaireBatches/batch0': typeof QuestionnaireBatchesBatch0Route
+  '/questionnaireBatches/batch1': typeof QuestionnaireBatchesBatch1Route
+  '/questionnaireBatches/batch2': typeof QuestionnaireBatchesBatch2Route
+  '/questionnaireBatches/batch3': typeof QuestionnaireBatchesBatch3Route
+  '/questionnaireBatches/batch4': typeof QuestionnaireBatchesBatch4Route
+  '/questionnaireBatches/batch5': typeof QuestionnaireBatchesBatch5Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/users'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/questionnaire'
+    | '/users'
+    | '/questionnaireBatches/batch0'
+    | '/questionnaireBatches/batch1'
+    | '/questionnaireBatches/batch2'
+    | '/questionnaireBatches/batch3'
+    | '/questionnaireBatches/batch4'
+    | '/questionnaireBatches/batch5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/users'
-  id: '__root__' | '/' | '/about' | '/users'
+  to:
+    | '/'
+    | '/about'
+    | '/questionnaire'
+    | '/users'
+    | '/questionnaireBatches/batch0'
+    | '/questionnaireBatches/batch1'
+    | '/questionnaireBatches/batch2'
+    | '/questionnaireBatches/batch3'
+    | '/questionnaireBatches/batch4'
+    | '/questionnaireBatches/batch5'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/questionnaire'
+    | '/users'
+    | '/questionnaireBatches/batch0'
+    | '/questionnaireBatches/batch1'
+    | '/questionnaireBatches/batch2'
+    | '/questionnaireBatches/batch3'
+    | '/questionnaireBatches/batch4'
+    | '/questionnaireBatches/batch5'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  QuestionnaireRoute: typeof QuestionnaireRoute
   UsersRoute: typeof UsersRoute
+  QuestionnaireBatchesBatch0Route: typeof QuestionnaireBatchesBatch0Route
+  QuestionnaireBatchesBatch1Route: typeof QuestionnaireBatchesBatch1Route
+  QuestionnaireBatchesBatch2Route: typeof QuestionnaireBatchesBatch2Route
+  QuestionnaireBatchesBatch3Route: typeof QuestionnaireBatchesBatch3Route
+  QuestionnaireBatchesBatch4Route: typeof QuestionnaireBatchesBatch4Route
+  QuestionnaireBatchesBatch5Route: typeof QuestionnaireBatchesBatch5Route
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaire': {
+      id: '/questionnaire'
+      path: '/questionnaire'
+      fullPath: '/questionnaire'
+      preLoaderRoute: typeof QuestionnaireRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -82,13 +190,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/questionnaireBatches/batch5': {
+      id: '/questionnaireBatches/batch5'
+      path: '/questionnaireBatches/batch5'
+      fullPath: '/questionnaireBatches/batch5'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaireBatches/batch4': {
+      id: '/questionnaireBatches/batch4'
+      path: '/questionnaireBatches/batch4'
+      fullPath: '/questionnaireBatches/batch4'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaireBatches/batch3': {
+      id: '/questionnaireBatches/batch3'
+      path: '/questionnaireBatches/batch3'
+      fullPath: '/questionnaireBatches/batch3'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaireBatches/batch2': {
+      id: '/questionnaireBatches/batch2'
+      path: '/questionnaireBatches/batch2'
+      fullPath: '/questionnaireBatches/batch2'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaireBatches/batch1': {
+      id: '/questionnaireBatches/batch1'
+      path: '/questionnaireBatches/batch1'
+      fullPath: '/questionnaireBatches/batch1'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaireBatches/batch0': {
+      id: '/questionnaireBatches/batch0'
+      path: '/questionnaireBatches/batch0'
+      fullPath: '/questionnaireBatches/batch0'
+      preLoaderRoute: typeof QuestionnaireBatchesBatch0RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  QuestionnaireRoute: QuestionnaireRoute,
   UsersRoute: UsersRoute,
+  QuestionnaireBatchesBatch0Route: QuestionnaireBatchesBatch0Route,
+  QuestionnaireBatchesBatch1Route: QuestionnaireBatchesBatch1Route,
+  QuestionnaireBatchesBatch2Route: QuestionnaireBatchesBatch2Route,
+  QuestionnaireBatchesBatch3Route: QuestionnaireBatchesBatch3Route,
+  QuestionnaireBatchesBatch4Route: QuestionnaireBatchesBatch4Route,
+  QuestionnaireBatchesBatch5Route: QuestionnaireBatchesBatch5Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

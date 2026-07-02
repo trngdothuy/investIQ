@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
 // File name determines the URL path:  index.tsx → "/"
 export const Route = createFileRoute('/')({
@@ -10,8 +11,9 @@ function HomePage() {
     <main>
       {/* Hero Section */}
       <section className="hero">
+        <h1 className="font-bold text-lg text-emerald-600 hero-title">InvestIQ</h1>
+        <br />
         <div className="badge">Built for retail investors</div>
-
         <h1 className="hero-title">
           Invest with <span className="gradient-text">clarity, confidence</span>
           <br />
@@ -19,17 +21,19 @@ function HomePage() {
         </h1>
 
         <p className="hero-description">
-          InvestIQ helps retail investors understand portfolio risk, diversification, and ESG impact
-          through interactive learning and personalized recommendations.
+          InvestIQ helps retail investors understand portfolio risk, diversification, and social
+          impacts through interactive learning and personalized recommendations.
         </p>
 
         <p className="market-note">
-          🇺🇸 Currently supports <strong>U.S. stock market investments only.</strong>
+          🇺🇸 Currently supports <strong>U.S. stock market investments only. </strong>
           Global markets will be supported in future releases.
         </p>
 
         <div className="hero-actions">
-          <button className="primary-btn">Get Started →</button>
+          <Link to="/questionnaire" className="primary-btn">
+            Get Started →
+          </Link>
         </div>
 
         <p className="helper-text">Takes less than 2 minutes • No financial experience required</p>
@@ -56,12 +60,9 @@ function HomePage() {
         <div className="feature-card">
           <div className="feature-icon">🌱</div>
 
-          <h3>ESG Insights</h3>
+          <h3>Environmental and Social Impacts</h3>
 
-          <p>
-            Evaluate environmental, social and governance factors before making investment
-            decisions.
-          </p>
+          <p>Evaluate environmental and social factors before making investment decisions.</p>
         </div>
       </section>
 
@@ -106,8 +107,8 @@ function HomePage() {
               ★★★★☆ <span className="rating-number">4.8</span>{' '}
             </div>
             <p>
-              “The ESG insights make me feel more confident that my investments align with my
-              values.”
+              “The environmental and social impact insights make me feel more confident that my
+              investments align with my values.”
             </p>
             <span className="testimonial-author">— Priya S.</span>
           </div>
@@ -119,7 +120,10 @@ function HomePage() {
           {/* Brand */}
           <div className="footer-brand">
             <h3>InvestIQ</h3>
-            <p>Smarter investing through clarity, education, and ESG awareness.</p>
+            <p>
+              Smarter investing through clarity, education, and environmental and social impact
+              awareness.
+            </p>
           </div>
 
           {/* Links */}

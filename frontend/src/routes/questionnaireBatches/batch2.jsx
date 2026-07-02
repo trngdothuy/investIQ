@@ -63,7 +63,7 @@ function Batch2() {
       <ProgressHeader title="Investment Goals" step={2} totalSteps={5} />
 
       {/* Q4 */}
-           <QuestionBlock
+      <QuestionBlock
         title="What is your main reason for investing?"
         helper="We'll tailor your recommendations based on what you're investing for."
         completed={!!reason}

@@ -88,6 +88,9 @@ function Batch5() {
         id: crypto.randomUUID(),
         ticker: stock.ticker,
         name: stock.name,
+        sector: stock.sector,
+        industry: stock.industry,
+        currentPrice: stock.currentPrice,
         quantity: '',
         buyPrice: '',
       },
@@ -204,7 +207,7 @@ function Batch5() {
                       />
                     </td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Buy price input">
                       <input
                         className="input input-bordered input-sm w-28 text-center"
                         type="number"
@@ -218,7 +221,7 @@ function Batch5() {
 
                     <td className="text-center font-semibold">{value}</td>
 
-                    <td className="text-center">
+                    <td className="text-center" aria-label="Remove option">
                       <button
                         className="btn btn-ghost btn-sm text-error"
                         onClick={() => removeRow(row.id)}

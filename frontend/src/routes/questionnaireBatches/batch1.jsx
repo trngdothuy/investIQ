@@ -58,7 +58,7 @@ function Batch1() {
       {/* Q1 */}
       <QuestionBlock
         title="What should we call you?"
-        helper="This helps us personalise your InvestIQ experience."
+        helper="This helps us personalize your InvestIQ experience."
         completed={!!name}
       >
         <input
@@ -73,17 +73,17 @@ function Batch1() {
       {/* Q2 */}
       <QuestionBlock
         title="How old are you?"
-        helper="We use this to personalise risk guidance and investment insights."
+        helper="We use this to personalize risk guidance and investment insights."
         completed={ageValid}
       >
         <input
           type="number"
           className={`input w-full ${ageError ? 'input-error' : ''}`}
-          placeholder="18–99"
+          placeholder="18-99"
           value={age}
           onChange={handleAgeChange}
         />
-        {ageError && <p className="q-helper text-red-500">{ageError}</p>}
+        {ageError && <p className="q-helperError text-red-500">{ageError}</p>}
       </QuestionBlock>
 
       {/* Q3 */}

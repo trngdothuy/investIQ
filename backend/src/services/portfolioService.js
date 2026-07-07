@@ -117,34 +117,37 @@ export function calculatePortfolioRisk(
   let score = 0
   const reasons = []
 
-  // 1. Largest sector exposure (30 pts)
+  // 1. Largest sector exposure (40 pts)
+  // Is most of the money in one sector? -> More risk.
   const largestSector = Math.max(
     ...Object.values(sectorExposure).map((s) => s.percentage),
   )
 
   if (largestSector > 50) {
-    score += 30
+    score += 40
     reasons.push('More than half of your portfolio is invested in one sector.')
   } else if (largestSector > 35) {
-    score += 20
+    score += 30
     reasons.push('Large concentration in a single sector.')
   } else if (largestSector > 20) {
-    score += 10
+    score += 15
   }
 
-  // 2. Number of holdings (20 pts)
+  // 2. Number of holdings (25 pts)
+  // Is most money in one stock? -> More risk. Fewer holdings -> More risk.
   const holdings = portfolioSummary.numberOfHoldings
 
   if (holdings <= 5) {
-    score += 20
+    score += 25
     reasons.push('Very few holdings.')
   } else if (holdings <= 10) {
-    score += 12
+    score += 15
   } else if (holdings <= 20) {
-    score += 6
+    score += 8
   }
 
-  // 3. Largest position (20 pts)
+  // 3. Largest holding (20 pts)
+  // Does one stock represent a large share of the portfolio? -> More risk.
   const largestInvestment = Math.max(
     ...portfolioSummary.holdings.map((h) => h.investment),
   )
@@ -162,43 +165,28 @@ export function calculatePortfolioRisk(
     score += 8
   }
 
-  // 4. Investment horizon (10 pts)
+  // 4. Investment horizon (15 pts)
+  // Shorter investment horizon -> More risk.
   switch (questionnaire.horizon) {
     case 'Less than 1 year':
-      score += 10
+      score += 15
       reasons.push('Very short investment horizon.')
       break
 
     case '1-3 years':
-      score += 7
+      score += 10
+      reasons.push('Moderate investment horizon.')
       break
 
     case '3-5 years':
-      score += 4
+      score += 5
+      reasons.push('Long-term investment horizon.')
       break
 
     case 'More than 5 years':
+      reasons.push('Very long-term investment horizon.')
       break
   }
-
-  // 5. Sector risk (20 pts)
-  const sectorRisk = {
-    'Electronic Technology': 10,
-    'Technology Services': 9,
-    'Retail Trade': 7,
-    'Consumer Services': 6,
-    'Consumer Non-Durables': 3,
-    Utilities: 2,
-  }
-
-  let weightedRisk = 0
-
-  for (const [sector, info] of Object.entries(sectorExposure)) {
-    weightedRisk +=
-      (info.percentage / 100) * (sectorRisk[sector] ?? 5)
-  }
-
-  score += weightedRisk * 2
 
   score = Math.min(100, Math.round(score))
 
@@ -210,6 +198,8 @@ export function calculatePortfolioRisk(
   else profile = 'Very High'
 
   console.log(`Portfolio risk score: ${score}, Profile: ${profile}`)
+  console.log('Reasons for risk score:')
+  reasons.forEach((reason) => console.log(`- ${reason}`))
 
   return {
     score,

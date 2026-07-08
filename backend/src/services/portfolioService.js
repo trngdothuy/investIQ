@@ -27,8 +27,8 @@ export function analysePortfolio(questionnaire) {
 
   const result = {
     portfolioSummary: {
-      totalInvestment: totalInvestedValue(holdings),
       totalCurrentValue: totalPortfolioValue(holdings),
+      totalInvestment: totalInvestedValue(holdings),
       numberOfHoldings: numberofHoldings(holdings),
       holdings,
     },

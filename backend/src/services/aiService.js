@@ -45,8 +45,7 @@ Return:
     messages: [
       {
         role: 'system',
-        content:
-          'You are a professional investment portfolio analysis assistant.',
+        content: 'You are a professional investment portfolio analysis assistant.',
       },
       {
         role: 'user',
@@ -55,7 +54,7 @@ Return:
     ],
   })
 
-//   console.log('AI response:', response.choices[0].message.content)
+  //   console.log('AI response:', response.choices[0].message.content)
 
   return JSON.parse(response.choices[0].message.content)
 }

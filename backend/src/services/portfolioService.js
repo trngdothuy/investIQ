@@ -396,13 +396,9 @@ export function analyzeEnvironmentalImpact(questionnaire) {
   const positiveIndustries = ['Renewable energy', 'Clean energy']
   const negativeIndustries = ['Fossil Fuels', 'Fast fashion']
 
-  const positiveHoldings = portfolio.filter((stock) =>
-    positiveIndustries.includes(stock.industry),
-  )
+  const positiveHoldings = portfolio.filter((stock) => positiveIndustries.includes(stock.industry))
 
-  const negativeHoldings = portfolio.filter((stock) =>
-    negativeIndustries.includes(stock.industry),
-  )
+  const negativeHoldings = portfolio.filter((stock) => negativeIndustries.includes(stock.industry))
 
   let status
   let message
@@ -446,9 +442,7 @@ export function analyzeSocialImpact(questionnaire) {
   const conflicts = []
 
   for (const value of highlights) {
-    const boycottCategory = BOYCOTT_LIST.find(
-      (item) => item.category === value,
-    )
+    const boycottCategory = BOYCOTT_LIST.find((item) => item.category === value)
 
     if (!boycottCategory) continue
 
@@ -470,16 +464,12 @@ export function analyzeSocialImpact(questionnaire) {
   if (conflicts.length === 0) {
     status = 'Positive'
 
-    message =
-      'Your current portfolio appears to align with the social values you selected.'
+    message = 'Your current portfolio appears to align with the social values you selected.'
   } else {
     status = 'Conflict'
 
     const summary = conflicts
-      .map(
-        (item) =>
-          `${item.category}: ${item.companies.join(', ')}`,
-      )
+      .map((item) => `${item.category}: ${item.companies.join(', ')}`)
       .join('; ')
 
     message = `Some of your investments may conflict with your selected values. ${summary}. You may wish to review these holdings.`

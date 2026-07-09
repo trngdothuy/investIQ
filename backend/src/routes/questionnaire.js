@@ -11,9 +11,9 @@ questionnaireRoutes.post('/', async (req, res) => {
     console.log(req.body)
 
     const analysis = analysePortfolio(req.body)
-    
+
     const { suggestions } = await generateSuggestions(req.body, analysis)
-    
+
     analysis.aiSuggestions = suggestions
     console.log('Suggestions:', suggestions)
 

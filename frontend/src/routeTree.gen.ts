@@ -40,42 +40,36 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuestionnaireBatchesBatch5Route =
-  QuestionnaireBatchesBatch5RouteImport.update({
-    id: '/questionnaireBatches/batch5',
-    path: '/questionnaireBatches/batch5',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const QuestionnaireBatchesBatch4Route =
-  QuestionnaireBatchesBatch4RouteImport.update({
-    id: '/questionnaireBatches/batch4',
-    path: '/questionnaireBatches/batch4',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const QuestionnaireBatchesBatch3Route =
-  QuestionnaireBatchesBatch3RouteImport.update({
-    id: '/questionnaireBatches/batch3',
-    path: '/questionnaireBatches/batch3',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const QuestionnaireBatchesBatch2Route =
-  QuestionnaireBatchesBatch2RouteImport.update({
-    id: '/questionnaireBatches/batch2',
-    path: '/questionnaireBatches/batch2',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const QuestionnaireBatchesBatch1Route =
-  QuestionnaireBatchesBatch1RouteImport.update({
-    id: '/questionnaireBatches/batch1',
-    path: '/questionnaireBatches/batch1',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const QuestionnaireBatchesBatch0Route =
-  QuestionnaireBatchesBatch0RouteImport.update({
-    id: '/questionnaireBatches/batch0',
-    path: '/questionnaireBatches/batch0',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const QuestionnaireBatchesBatch5Route = QuestionnaireBatchesBatch5RouteImport.update({
+  id: '/questionnaireBatches/batch5',
+  path: '/questionnaireBatches/batch5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch4Route = QuestionnaireBatchesBatch4RouteImport.update({
+  id: '/questionnaireBatches/batch4',
+  path: '/questionnaireBatches/batch4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch3Route = QuestionnaireBatchesBatch3RouteImport.update({
+  id: '/questionnaireBatches/batch3',
+  path: '/questionnaireBatches/batch3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch2Route = QuestionnaireBatchesBatch2RouteImport.update({
+  id: '/questionnaireBatches/batch2',
+  path: '/questionnaireBatches/batch2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch1Route = QuestionnaireBatchesBatch1RouteImport.update({
+  id: '/questionnaireBatches/batch1',
+  path: '/questionnaireBatches/batch1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireBatchesBatch0Route = QuestionnaireBatchesBatch0RouteImport.update({
+  id: '/questionnaireBatches/batch0',
+  path: '/questionnaireBatches/batch0',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute

@@ -2,7 +2,10 @@ export function analysePortfolio(questionnaire) {
   const portfolio = questionnaire.portfolio ?? []
   const portfolioSummary = calculateTotalInvestment(portfolio)
   const totalPortfolioValue = calculateTotalPortfolioValue(portfolio)
-  const portfolioChange = calculatePortfolioChange(totalPortfolioValue, portfolioSummary.totalInvestment)
+  const portfolioChange = calculatePortfolioChange(
+    totalPortfolioValue,
+    portfolioSummary.totalInvestment,
+  )
   const topHoldings = calculateTopHoldings(portfolio, totalPortfolioValue)
   const assetAllocation = calculateAssetAllocation(portfolio, totalPortfolioValue)
   const sectorExposure = calculateSectorExposure(portfolio)
@@ -15,7 +18,6 @@ export function analysePortfolio(questionnaire) {
   const riskTolerance = calculateRiskTolerance(questionnaire)
   const portfolioRisk = calculatePortfolioRisk(portfolioSummary, sectorExposure, questionnaire)
   const riskComparison = compareRisk(riskTolerance, portfolioRisk)
-
 
   return {
     portfolioSummary,
@@ -217,11 +219,7 @@ export function calculateDiversification(
   else if (largestSectorPercentage <= 60) sectorScore = 40
 
   // Final weighted score
-  const score = Math.round(
-    holdingsScore * 0.25 +
-      concentrationScore * 0.40 +
-      sectorScore * 0.35,
-  )
+  const score = Math.round(holdingsScore * 0.25 + concentrationScore * 0.4 + sectorScore * 0.35)
 
   let interpretation
 

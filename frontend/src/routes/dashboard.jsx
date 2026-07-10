@@ -7,10 +7,6 @@ export const Route = createFileRoute('/dashboard')({
 })
 
 function Dashboard() {
-  // ===============================
-  // Portfolio Data (Mock Data)
-  // Replace with backend API later
-  // ===============================
 
   const storedQuestionnaire = localStorage.getItem('questionnaire')
   console.log(storedQuestionnaire)
@@ -39,93 +35,15 @@ function Dashboard() {
   socialImpact,
 } = analysis
 
-  // const holdings = [
-  //   {
-  //     name: 'Apple',
-  //     allocation: 24,
-  //     change: '+3.2%',
-  //     sector: 'Technology',
-  //   },
-  //   {
-  //     name: 'Microsoft',
-  //     allocation: 18,
-  //     change: '+2.1%',
-  //     sector: 'Technology',
-  //   },
-  //   {
-  //     name: 'NVIDIA',
-  //     allocation: 16,
-  //     change: '+5.4%',
-  //     sector: 'Technology',
-  //   },
-  //   {
-  //     name: 'Tesla',
-  //     allocation: 11,
-  //     change: '-1.6%',
-  //     sector: 'Consumer',
-  //   },
-  //   {
-  //     name: 'Amazon',
-  //     allocation: 9,
-  //     change: '+1.8%',
-  //     sector: 'Consumer',
-  //   },
-  //   {
-  //     name: 'JPMorgan',
-  //     allocation: 10,
-  //     change: '+0.9%',
-  //     sector: 'Finance',
-  //   },
-  //   {
-  //     name: 'Johnson & Johnson',
-  //     allocation: 7,
-  //     change: '+2.5%',
-  //     sector: 'Healthcare',
-  //   },
-  //   {
-  //     name: 'Exxon Mobil',
-  //     allocation: 5,
-  //     change: '-0.8%',
-  //     sector: 'Energy',
-  //   },
-  // ]
-
   const holdings = portfolioSummary.holdings
 
-  // const analysis = {
-  //   riskTolerance: {
-  //     score: 75,
-  //     profile: 'Aggressive',
-  //   },
-
-  //   portfolioRisk: {
-  //     score: 62,
-  //     profile: 'High',
-  //     reasons: [
-  //       'Large concentration in Technology sector.',
-  //       'One investment represents a large share of the portfolio.',
-  //     ],
-  //   },
-
-  //   riskComparison: {
-  //     status: 'Good',
-  //     direction: 'Portfolio is aligned with your tolerance',
-  //   },
-  // }
   // ===============================
   // Portfolio Summary
   // ===============================
 
-  // const portfolioValue = 52340
-
   const portfolioValue = totalPortfolioValue
-
-  // const beta = 1.12
-  // const totalInvested = 44195
   const totalInvested = portfolioSummary.totalInvestment
-  // const numberOfHoldings = holdings.length
   const numberOfHoldings = portfolioSummary.numberOfHoldings
-  // const { riskTolerance, portfolioRisk, riskComparison } = analysis
 
   const allocationMap = Object.fromEntries(
     assetAllocation.map(item => [item.ticker, item.percentage])
@@ -148,70 +66,7 @@ function Dashboard() {
     percentage: value.percentage,
   }))
 
-  // const sectors = Object.values(
-  //   holdings.reduce((acc, stock) => {
-  //     if (!acc[stock.sector]) {
-  //       acc[stock.sector] = {
-  //         sector: stock.sector,
-  //         percentage: 0,
-  //       }
-  //     }
-
-  //     acc[stock.sector].percentage += stock.allocation
-
-  //     return acc
-  //   }, {}),
-  // )
-
-  // ===============================
-  // Diversification Score (HHI)
-  // ===============================
-
-  // const hhi = holdings.reduce((sum, stock) => {
-  //   const weight = stock.allocation / 100
-  //   return sum + weight * weight
-  // }, 0)
-
-  // const diversificationScore = Math.round((1 - hhi) * 100)
-
-  // ===============================
-  // Risk Score
-  // ===============================
-
-  // const concentrationPenalty = hhi * 20
-  // const betaPenalty = beta
-
-  // const riskScore = Math.min(
-  //   10,
-  //   Math.max(1, Number((concentrationPenalty + betaPenalty).toFixed(1))),
-  // )
-
-  // const riskLevel = riskScore < 4 ? 'Low' : riskScore < 7 ? 'Medium' : 'High'
-
-  // const diversificationLabel =
-  //   diversificationScore >= 80
-  //     ? 'Well Diversified'
-  //     : diversificationScore >= 60
-  //       ? 'Moderately Diversified'
-  //       : 'Highly Concentrated'
-
-  // ===============================
-  // Portfolio Intelligence
-  // ===============================
-
-  // const largestHolding = holdings.reduce((a, b) => (a.allocation > b.allocation ? a : b))
-  // const topHoldings = [...holdings].toSorted((a, b) => b.allocation - a.allocation).slice(0, 3)
-
-  // const largestSector = sectors.reduce((a, b) => (a.percentage > b.percentage ? a : b))
-
-  // const insights = [
-  //   `Largest holding is ${largestHolding.name} (${largestHolding.allocation}%).`,
-  //   `${largestSector.sector} represents ${largestSector.percentage}% of your portfolio.`,
-  //   `Diversification score is ${diversificationScore}/100, indicating a ${diversificationLabel.toLowerCase()}.`,
-  //   `Overall portfolio risk is ${riskLevel}.`,
-  //   `Consider increasing exposure to Healthcare or Energy to reduce concentration risk.`,
-  // ]
-
+  
   if (!analysis) {
   return <p>No portfolio analysis found.</p>
   }

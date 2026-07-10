@@ -19,6 +19,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "node-pg-migrate": "^8.0.4",
+    "openai": "^6.46.0",
     "pg": "^8.22.0"
   },
   "devDependencies": {

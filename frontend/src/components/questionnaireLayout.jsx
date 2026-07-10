@@ -31,8 +31,12 @@ export default function QuestionnaireLayout({ children }) {
           <div className="footer-links">
             <div className="footer-column">
               <h4>Legal</h4>
-              <button type="button">Privacy Policy</button>
-              <button type="button">Terms of Service</button>
+              <Link to="/privacy-policy" className="footer-link">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="footer-link">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>

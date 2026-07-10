@@ -16,9 +16,9 @@ vi.mock('@tanstack/react-router', async () => {
 
 import HomePage from '../routes/index'
 
-describe('Landing Page', () => {
-  const renderPage = () => render(<HomePage />)
+const renderPage = () => render(<HomePage />)
 
+describe('Landing Page', () => {
   it('renders the InvestIQ title', () => {
     renderPage()
 

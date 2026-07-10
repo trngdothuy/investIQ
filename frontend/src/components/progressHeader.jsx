@@ -16,11 +16,11 @@ export default function ProgressHeader({ title, step, totalSteps }) {
             <span
               key={label}
               className={`
-                px-2 py-1 rounded
-                ${isDone ? 'text-primary font-medium' : ''}
-                ${isActive ? 'bg-primary text-primary-content font-semibold rounded-full px-3' : ''}
-                ${!isActive && !isDone ? 'text-base-content/40' : ''}
-              `}
+              q-breadcrumb-item
+              ${isDone ? 'done' : ''}
+              ${isActive ? 'active' : ''}
+              ${!isDone && !isActive ? 'inactive' : ''}
+            `}
             >
               {label}
 

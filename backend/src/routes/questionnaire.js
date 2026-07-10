@@ -19,7 +19,7 @@ questionnaireRoutes.post('/', async (req, res) => {
 
     await saveAnalysis(req.body, analysis)
 
-    res.json({ analysis, suggestions })
+    res.json(analysis)
   } catch (error) {
     console.error('Error analyzing portfolio:', error)
     res.status(500).json({ error: 'Internal server error' })

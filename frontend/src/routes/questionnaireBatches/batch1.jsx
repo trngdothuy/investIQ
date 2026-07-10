@@ -45,11 +45,14 @@ export default function Batch1() {
   const canProceed = name.trim() && ageValid && situation
 
   function handleNext() {
-    updateAnswers({ name, age: Number(age), situation })
+    updateAnswers({
+      name: name.trim(),
+      age: Number(age),
+      situation,
+      lastCompletedBatch: 1,
+    })
     navigate({ to: '/questionnaireBatches/batch2' })
   }
-
-  const isComplete = canProceed
 
   return (
     <QuestionnaireLayout>
@@ -124,7 +127,7 @@ export default function Batch1() {
         </button>
 
         <button className="btn btn-primary w-full" disabled={!canProceed} onClick={handleNext}>
-          {isComplete ? 'Continue →' : 'Next →'}
+          Continue →
         </button>
       </div>
     </QuestionnaireLayout>

@@ -131,13 +131,13 @@ export default function HomePage() {
             <div className="footer-column">
               <h4>Legal</h4>
 
-              <button type="button" className="footer-link">
+              <Link to="/privacy-policy" className="footer-link">
                 Privacy Policy
-              </button>
+              </Link>
 
-              <button type="button" className="footer-link">
+              <Link to="/terms-of-service" className="footer-link">
                 Terms of Service
-              </button>
+              </Link>
             </div>
           </div>
         </div>

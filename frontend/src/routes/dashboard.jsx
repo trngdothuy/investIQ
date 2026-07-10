@@ -7,92 +7,47 @@ export const Route = createFileRoute('/dashboard')({
 })
 
 function Dashboard() {
-  // ===============================
-  // Portfolio Data (Mock Data)
-  // Replace with backend API later
-  // ===============================
+  const storedQuestionnaire = localStorage.getItem('questionnaire')
+  console.log(storedQuestionnaire)
 
-  const holdings = [
-    {
-      name: 'Apple',
-      allocation: 24,
-      change: '+3.2%',
-      sector: 'Technology',
-    },
-    {
-      name: 'Microsoft',
-      allocation: 18,
-      change: '+2.1%',
-      sector: 'Technology',
-    },
-    {
-      name: 'NVIDIA',
-      allocation: 16,
-      change: '+5.4%',
-      sector: 'Technology',
-    },
-    {
-      name: 'Tesla',
-      allocation: 11,
-      change: '-1.6%',
-      sector: 'Consumer',
-    },
-    {
-      name: 'Amazon',
-      allocation: 9,
-      change: '+1.8%',
-      sector: 'Consumer',
-    },
-    {
-      name: 'JPMorgan',
-      allocation: 10,
-      change: '+0.9%',
-      sector: 'Finance',
-    },
-    {
-      name: 'Johnson & Johnson',
-      allocation: 7,
-      change: '+2.5%',
-      sector: 'Healthcare',
-    },
-    {
-      name: 'Exxon Mobil',
-      allocation: 5,
-      change: '-0.8%',
-      sector: 'Energy',
-    },
-  ]
-
-  const analysis = {
-    riskTolerance: {
-      score: 75,
-      profile: 'Aggressive',
-    },
-
-    portfolioRisk: {
-      score: 62,
-      profile: 'High',
-      reasons: [
-        'Large concentration in Technology sector.',
-        'One investment represents a large share of the portfolio.',
-      ],
-    },
-
-    riskComparison: {
-      status: 'Good',
-      direction: 'Portfolio is aligned with your tolerance',
-    },
+  if (!storedQuestionnaire) {
+    return <p>No portfolio analysis found.</p>
   }
+
+  const data = JSON.parse(storedQuestionnaire)
+  const name = data.name
+  const analysis = data.analysis
+  // const aiSuggestions = data.analysis.suggestions
+
+  const {
+    portfolioSummary,
+    totalPortfolioValue,
+    portfolioChange,
+    topHoldings,
+    assetAllocation,
+    sectorExposure,
+    diversification,
+    riskTolerance,
+    portfolioRisk,
+    riskComparison,
+    environmentalImpact,
+    socialImpact,
+    aiSuggestions,
+  } = analysis
+
+  const holdings = portfolioSummary.holdings
+
   // ===============================
   // Portfolio Summary
   // ===============================
 
-  const portfolioValue = 52340
+  const portfolioValue = totalPortfolioValue
+  const totalInvested = portfolioSummary.totalInvestment
+  const numberOfHoldings = portfolioSummary.numberOfHoldings
 
-  const beta = 1.12
-  const totalInvested = 44195
-  const numberOfHoldings = holdings.length
-  const { riskTolerance, portfolioRisk, riskComparison } = analysis
+  const allocationMap = Object.fromEntries(
+    assetAllocation.map((item) => [item.ticker, item.percentage]),
+  )
 
   // ===============================
   // Sector Allocation
@@ -106,70 +61,14 @@ function Dashboard() {
     Energy: '#06b6d4',
   }
   const COLORS = ['#4f46e5', '#22c55e', '#f59e0b', '#ef4444', '#06b6d4']
+  const sectors = Object.entries(sectorExposure).map(([sector, value]) => ({
+    sector,
+    percentage: value.percentage,
+  }))
 
-  const sectors = Object.values(
-    holdings.reduce((acc, stock) => {
-      if (!acc[stock.sector]) {
-        acc[stock.sector] = {
-          sector: stock.sector,
-          percentage: 0,
-        }
-      }
-
-      acc[stock.sector].percentage += stock.allocation
-
-      return acc
-    }, {}),
-  )
-
-  // ===============================
-  // Diversification Score (HHI)
-  // ===============================
-
-  const hhi = holdings.reduce((sum, stock) => {
-    const weight = stock.allocation / 100
-    return sum + weight * weight
-  }, 0)
-
-  const diversificationScore = Math.round((1 - hhi) * 100)
-
-  // ===============================
-  // Risk Score
-  // ===============================
-
-  const concentrationPenalty = hhi * 20
-  const betaPenalty = beta
-
-  const riskScore = Math.min(
-    10,
-    Math.max(1, Number((concentrationPenalty + betaPenalty).toFixed(1))),
-  )
-
-  const riskLevel = riskScore < 4 ? 'Low' : riskScore < 7 ? 'Medium' : 'High'
-
-  const diversificationLabel =
-    diversificationScore >= 80
-      ? 'Well Diversified'
-      : diversificationScore >= 60
-        ? 'Moderately Diversified'
-        : 'Highly Concentrated'
-
-  // ===============================
-  // Portfolio Intelligence
-  // ===============================
-
-  const largestHolding = holdings.reduce((a, b) => (a.allocation > b.allocation ? a : b))
-  const topHoldings = [...holdings].toSorted((a, b) => b.allocation - a.allocation).slice(0, 3)
-
-  const largestSector = sectors.reduce((a, b) => (a.percentage > b.percentage ? a : b))
-
-  const insights = [
-    `Largest holding is ${largestHolding.name} (${largestHolding.allocation}%).`,
-    `${largestSector.sector} represents ${largestSector.percentage}% of your portfolio.`,
-    `Diversification score is ${diversificationScore}/100, indicating a ${diversificationLabel.toLowerCase()}.`,
-    `Overall portfolio risk is ${riskLevel}.`,
-    `Consider increasing exposure to Healthcare or Energy to reduce concentration risk.`,
-  ]
+  if (!analysis) {
+    return <p>No portfolio analysis found.</p>
+  }
 
   return (
     <div className="dashboard">
@@ -177,15 +76,16 @@ function Dashboard() {
 
       <div className="dashboard-header">
         <div>
+          <h1>Welcome {name} 👋</h1>
           <h1>Portfolio Dashboard</h1>
           <p>Understand your investments. Make better decisions with AI-powered suggestions.</p>
         </div>
       </div>
-      <div className="disclaimer">
+      {/* <div className="disclaimer">
         ⚠️ The recommendations in this dashboard are generated by AI to support your
         decision-making. They are intended as a reference and should be used alongside your own
         research and judgment.
-      </div>
+      </div> */}
 
       {/* ================= METRICS ================= */}
 
@@ -193,8 +93,8 @@ function Dashboard() {
         <MetricCard
           title="Portfolio Value"
           value={`$${portfolioValue.toLocaleString()}`}
-          change="+8.2%"
-          positive
+          change={`Overall Change: ${portfolioChange >= 0 ? '+' : ''}${portfolioChange.toFixed(2)}%`}
+          positive={portfolioChange >= 0}
         />
         <MetricCard
           title="Total Invested"
@@ -224,15 +124,15 @@ function Dashboard() {
 
                   <div className="holding-info">
                     <strong>{stock.name}</strong>
-                    <span>{stock.sector}</span>
+                    <span>{stock.ticker}</span>
                   </div>
 
                   <div className="holding-stats">
-                    <strong>{stock.allocation}%</strong>
+                    <strong>{allocationMap[stock.ticker]}%</strong>
 
-                    <span className={stock.change.startsWith('+') ? 'positive' : 'negative'}>
+                    {/* <span className={stock.change.startsWith('+') ? 'positive' : 'negative'}>
                       {stock.change}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               ))}
@@ -256,18 +156,18 @@ function Dashboard() {
                   <div className="stock-allocation-header">
                     <div>
                       <strong>{stock.name}</strong>
-                      <p>{stock.sector}</p>
+                      <p>{stock.ticker}</p>
                     </div>
 
-                    <span>{stock.allocation}%</span>
+                    <span>{allocationMap[stock.ticker]}%</span>
                   </div>
 
                   <div className="allocation-bar">
                     <div
                       className="allocation-fill"
                       style={{
-                        width: `${stock.allocation}%`,
-                        backgroundColor: sectorColors[stock.sector],
+                        width: `${allocationMap[stock.ticker]}%`,
+                        backgroundColor: sectorColors[stock.sector] ?? '#22c55e',
                       }}
                     />
                   </div>
@@ -309,12 +209,35 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Diversification Score */}
-          <MetricCard
-            title="Diversification Score"
-            value={`${diversificationScore} / 100`}
-            subtitle={diversificationLabel}
-          />
+          <div className="dashboard-card">
+            <h2>
+              Diversification Score
+              <InfoTooltip text="Indicates how well your investments are spread across different assets, reducing risk." />
+            </h2>
+
+            <div className="tolerance-score">
+              <h1>{diversification.score}/100</h1>
+
+              <span>{diversification.interpretation}</span>
+            </div>
+
+            <div className="progress">
+              <div
+                className="progress-fill"
+                style={{
+                  width: `${diversification.score}%`,
+                }}
+              />
+            </div>
+
+            <p>Diversification breakdown:</p>
+
+            <ul>
+              <li>- Holding Score: {diversification.breakdown.holdingsScore}/100</li>
+              <li>- Concentration Score: {diversification.breakdown.concentrationScore}/100</li>
+              <li>- Sector Score: {diversification.breakdown.sectorScore}/100</li>
+            </ul>
+          </div>
 
           {/* Portfolio Risk */}
           <div className="dashboard-card">
@@ -340,7 +263,38 @@ function Dashboard() {
 
             <p>Based on your questionnaire responses, your risk preference is classified as:</p>
 
-            <strong>{riskTolerance.profile} Investor</strong>
+            <strong>{riskTolerance.profile} Risk Tolerance</strong>
+          </div>
+
+          <div className="dashboard-card">
+            <h2>
+              Portfolio Risk
+              <InfoTooltip text="Your preferred investment risk level based on your questionnaire responses." />
+            </h2>
+
+            <div className="tolerance-score">
+              <h1>{portfolioRisk.score}/100</h1>
+
+              <span>{portfolioRisk.profile}</span>
+            </div>
+
+            <div className="progress">
+              <div
+                className="progress-fill"
+                style={{
+                  width: `${portfolioRisk.score}%`,
+                }}
+              />
+            </div>
+
+            <strong>{portfolioRisk.profile} Portfolio Risk</strong>
+
+            <p>Reasons for risk score:</p>
+            <ul>
+              {portfolioRisk.reasons.map((reason) => (
+                <li key={reason}>- {reason}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="dashboard-card">
@@ -361,9 +315,46 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className={`match-status ${riskComparison.status.toLowerCase()}`}>
-              {riskComparison.status}
+            <div className={`match-status ${riskComparison.difference}`}>
+              Difference: {riskComparison.difference}
             </div>
+
+            <div className={`match-status ${riskComparison.status.toLowerCase()}`}>
+              Status: {riskComparison.status}
+            </div>
+
+            <br />
+            {/* <p>Reasons for risk score::</p> */}
+
+            <strong>{riskComparison.direction}</strong>
+          </div>
+
+          {/* Environmental & Social Impact */}
+
+          <div className="dashboard-card">
+            <h2>
+              Environmental Impact
+              <InfoTooltip text="How your portfolio aligns with environmentally friendly industries." />
+            </h2>
+
+            <div className={`impact-status ${environmentalImpact.status.toLowerCase()}`}>
+              {environmentalImpact.status}
+            </div>
+
+            <p>{environmentalImpact.message}</p>
+          </div>
+
+          <div className="dashboard-card">
+            <h2>
+              Social Impact
+              <InfoTooltip text="Whether your portfolio aligns with the ethical values you selected." />
+            </h2>
+
+            <div className={`impact-status ${socialImpact.status.toLowerCase()}`}>
+              {socialImpact.status}
+            </div>
+
+            <p>{socialImpact.message}</p>
           </div>
 
           {/* AI Insights */}
@@ -374,10 +365,18 @@ function Dashboard() {
               Suggestions
               <InfoTooltip text="AI-generated insights highlighting possible improvements and risks in your portfolio." />{' '}
             </h2>
+            <div className="disclaimer">
+              ⚠️ The recommendations are generated by AI to support your decision-making. They are
+              intended as a reference and should be used alongside your own research and judgment.
+            </div>
 
             <ul className="insight-list">
-              {insights.map((item, index) => (
-                <li key={index}>{item}</li>
+              {aiSuggestions.map((item) => (
+                <li key={item.title}>
+                  <strong>{item.title}</strong>
+                  <br />
+                  {item.message}
+                </li>
               ))}
             </ul>
           </div>

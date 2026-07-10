@@ -2,7 +2,7 @@
 /* @plugin "daisyui"; */
 
 @theme {
-  /* ── Colors ───────────────────────────────────────────────────────────────
+  /* ── Colors───────────────────────────────────────────────────────────────
    * Change these hex/oklch values to match your project's brand.
    * Great tool to explore oklch colors: https://oklch.com            */
   --color-brand: oklch(0.55 0.22 264); /* primary buttons & links  */
@@ -438,6 +438,9 @@ nav {
   --error: #d01c1c;
   --primary: #10b981;
   --primary-content: #10b981;
+  --secondary: #059669;
+  --text: #475569;
+  --dark: #0f172a;
 }
 
 .text-primary {
@@ -544,19 +547,16 @@ nav {
   color: var(--base-content);
 }
 
-.q-helper {
+.q-helper,
+.q-helperError {
   font-size: 0.75rem;
-  color: rgba(30, 41, 59, 0.65);
   line-height: 1.4;
   margin-top: -0.25rem;
   font-style: italic;
 }
 
 .q-helperError {
-  font-size: 0.75rem;
-  line-height: 1.4;
-  margin-top: -0.25rem;
-  font-style: italic;
+  color: var(--error);
 }
 
 .q-input-group {
@@ -627,18 +627,14 @@ nav {
   margin-bottom: 2rem;
 }
 
-.q-progress-text {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .q-progress-title-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
 }
-
 .q-progress-title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -653,12 +649,53 @@ nav {
 .q-breadcrumbs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.6rem;
   font-size: 0.75rem;
   color: #050505;
   margin-bottom: 0.75rem;
 }
 
+.q-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.5rem 0.5rem;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+}
+
+.q-breadcrumb-item.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.2);
+}
+
+.q-breadcrumb-item.done {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--primary);
+
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.q-breadcrumb-item.inactive {
+  color: #94a3b8;
+}
+.q-breadcrumb-arrow {
+  margin-left: 0.75rem;
+  color: #050505;
+}
 @layer components {
   .btn {
     display: inline-flex;
@@ -759,16 +796,24 @@ nav {
   .input {
     display: block;
     width: 100%;
-    padding: 0.625rem 0.875rem;
-    border-radius: 0.5rem;
+
+    padding: 0.85rem 1rem;
+
+    min-height: 48px;
+
+    border-radius: 0.75rem;
+
     border: 1px solid var(--base-300);
     background: var(--base-100);
     color: var(--dark);
-    font-size: 0.875rem;
+
+    font-size: 0.95rem;
     line-height: 1.5;
+
     transition:
       border-color 0.15s ease,
       box-shadow 0.15s ease;
+
     outline: none;
   }
 
@@ -782,8 +827,9 @@ nav {
   }
 
   .input-sm {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.8125rem;
+    padding: 0.65rem 0.9rem;
+    min-height: 44px;
+    font-size: 0.9rem;
   }
 
   .input-error {
@@ -819,5 +865,273 @@ nav {
   .table tbody tr:hover {
     background: var(--base-200);
     transition: background 0.15s ease;
+  }
+}
+
+/* =======================================================
+   Holdings (Desktop + Mobile)
+======================================================= */
+
+.desktop-holdings {
+  display: block;
+}
+
+.mobile-holdings {
+  display: none;
+}
+
+.holding-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.holding-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.holding-name {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.holding-ticker {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.holding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.holding-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.holding-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.holding-field .input {
+  width: 100%;
+}
+
+.holding-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--base-300);
+
+  font-weight: 600;
+}
+
+.holding-value strong {
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+.holding-remove-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+
+  background: #fef2f2;
+  color: #dc2626;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.holding-remove-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.holding-remove-btn:active {
+  transform: scale(0.98);
+}
+
+/* =======================================================
+   Responsive for Mobile and Tablet
+======================================================= */
+@media (max-width: 768px) {
+  .q-options {
+    grid-template-columns: 1fr;
+  }
+
+  .q-option-btn {
+    padding: 0.9rem 1rem;
+  }
+  .q-nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .q-main {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .q-question {
+    padding: 1rem;
+  }
+  .q-label {
+    font-size: 1.1rem;
+  }
+  .q-helper {
+    font-size: 0.8rem;
+  }
+
+  .q-breadcrumbs {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 0.25rem;
+  }
+  .q-breadcrumbs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .q-flow {
+    width: 100%;
+  }
+
+  .btn {
+    min-height: 48px;
+  }
+
+  .q-option-btn {
+    width: 100%;
+  }
+
+  .input,
+  .input-sm {
+    width: 100%;
+  }
+
+  .input {
+    font-size: 0.9rem;
+  }
+
+  .q-progress-text {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .q-progress-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .q-logo {
+    font-size: 1.5rem;
+  }
+
+  .q-header-container {
+    padding: 0.85rem 1rem;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer {
+    text-align: center;
+  }
+  .footer-links {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-column {
+    width: 100%;
+  }
+  .q-label,
+  .table td {
+    word-break: break-word;
+  }
+
+  /* Hide desktop table */
+  .desktop-holdings {
+    display: none;
+  }
+
+  /* Show mobile cards */
+  .mobile-holdings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Stack inputs on very small phones */
+  .holding-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holding-card .btn {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .q-label {
+    font-size: 1rem;
+  }
+
+  .q-helper {
+    font-size: 0.75rem;
+  }
+
+  .q-progress-title {
+    font-size: 1rem;
+  }
+
+  .q-progress-step {
+    font-size: 0.75rem;
+  }
+
+  .q-question {
+    padding: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+  }
+
+  .q-header-container {
+    padding: 0.75rem;
   }
 }

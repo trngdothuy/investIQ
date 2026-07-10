@@ -202,7 +202,6 @@ function Dashboard() {
           subtitle="Initial Investment"
         />
 
-        
         <MetricCard title="Holdings" value={numberOfHoldings} subtitle="Individual Stocks" />
       </div>
 
@@ -244,7 +243,6 @@ function Dashboard() {
         {/* RIGHT COLUMN */}
 
         <div className="right-column">
-
           {/* Stock Allocation */}
           <div className="dashboard-card">
             <h2>
@@ -313,11 +311,10 @@ function Dashboard() {
 
           {/* Diversification Score */}
           <MetricCard
-          title="Diversification Score"
-          value={`${diversificationScore} / 100`}
-          subtitle={diversificationLabel}
-        />
-
+            title="Diversification Score"
+            value={`${diversificationScore} / 100`}
+            subtitle={diversificationLabel}
+          />
 
           {/* Portfolio Risk */}
           <div className="dashboard-card">
@@ -346,8 +343,6 @@ function Dashboard() {
             <strong>{riskTolerance.profile} Investor</strong>
           </div>
 
-          
-
           <div className="dashboard-card">
             <h2>
               Risk Assessment
@@ -370,8 +365,6 @@ function Dashboard() {
               {riskComparison.status}
             </div>
           </div>
-          
-          
 
           {/* AI Insights */}
 

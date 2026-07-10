@@ -109,9 +109,9 @@
 } */
 
 .dashboard-content {
-    display: grid;
-    grid-template-columns: 350px minmax(0, 1fr);
-    gap: 24px;
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 24px;
 }
 
 /* Left */
@@ -131,11 +131,10 @@
   align-items: start;
 } */
 
-
 .right-column {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .left-column,

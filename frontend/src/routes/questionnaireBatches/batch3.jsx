@@ -52,7 +52,11 @@ export default function Batch3() {
   const [monthlySwing, setMonthlySwing] = useState(answers.monthlySwing ?? null)
   const [returnsPriority, setReturnsPriority] = useState(answers.returnsPriority ?? null)
 
-  const canProceed = portfolioDrop && comfortLevel && monthlySwing && returnsPriority
+  const canProceed =
+    !!portfolioDrop &&
+    !!comfortLevel &&
+    !!monthlySwing &&
+    !!returnsPriority
 
   function handleNext() {
     const totalScore =
@@ -62,13 +66,15 @@ export default function Batch3() {
       (returnsPriority?.score ?? 0)
 
     updateAnswers({
-      portfolioDrop,
-      comfortLevel,
-      monthlySwing,
-      returnsPriority,
-      riskScore: totalScore,
-      riskProfile: getRiskProfile(totalScore),
-    })
+    portfolioDrop,
+    comfortLevel,
+    monthlySwing,
+    returnsPriority,
+    riskScore: totalScore,
+    riskProfile: getRiskProfile(totalScore),
+
+    lastCompletedBatch: 3,
+  })
 
     navigate({ to: '/questionnaireBatches/batch4' })
   }
@@ -81,7 +87,7 @@ export default function Batch3() {
       <QuestionBlock
         title="7. Imagine your portfolio drops 20% in value. What would you most likely do?"
         helper="This helps us understand your emotional reaction to market downturns."
-        state={portfolioDrop ? 'completed' : ''}
+        completed={!!portfolioDrop}
       >
         <div className="q-options">
           {q7Options.map((opt) => (
@@ -101,7 +107,7 @@ export default function Batch3() {
       <QuestionBlock
         title="8. How would you describe your comfort level with investment risk?"
         helper="We use this to determine your risk tolerance band."
-        state={comfortLevel ? 'completed' : ''}
+        completed={!!comfortLevel}
       >
         <div className="q-options">
           {q8Options.map((opt) => (
@@ -121,7 +127,8 @@ export default function Batch3() {
       <QuestionBlock
         title="9. How would you feel if your portfolio's value swung up or down by 15% in a single month?"
         helper="Short-term volatility helps us understand your behavioural risk profile."
-        state={monthlySwing ? 'completed' : ''}
+        completed={!!monthlySwing}
+
       >
         <div className="q-options">
           {q9Options.map((opt) => (
@@ -141,7 +148,7 @@ export default function Batch3() {
       <QuestionBlock
         title="10. When it comes to returns and risk, what matters most to you?"
         helper="This helps us balance growth vs stability in your recommendations."
-        state={returnsPriority ? 'completed' : ''}
+       completed={!!returnsPriority}
       >
         <div className="q-options">
           {q10Options.map((opt) => (
@@ -167,8 +174,12 @@ export default function Batch3() {
           ← Back
         </button>
 
-        <button className="btn btn-primary w-full" disabled={!canProceed} onClick={handleNext}>
-          Next →
+        <button
+          className="btn btn-primary w-full"
+          disabled={!canProceed}
+          onClick={handleNext}
+        >
+          Continue →
         </button>
       </div>
     </QuestionnaireLayout>

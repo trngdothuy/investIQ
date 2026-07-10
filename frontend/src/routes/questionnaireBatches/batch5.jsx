@@ -138,6 +138,8 @@ export default function Batch5() {
       })
 
       const analysis = await response.json()
+      localStorage.setItem('analysis', JSON.stringify(analysis))
+      console.log('Analysis saved to localStorage:', analysis)
 
       updateAnswers({
         portfolio: rows,

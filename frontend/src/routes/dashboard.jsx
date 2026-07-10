@@ -453,6 +453,34 @@ function Dashboard() {
             <strong>{riskComparison.direction}</strong>
           </div>
 
+          {/* Environmental & Social Impact */}
+
+          <div className="dashboard-card">
+            <h2>
+              Environmental Impact
+              <InfoTooltip text="How your portfolio aligns with environmentally friendly industries." />
+            </h2>
+
+            <div className={`impact-status ${environmentalImpact.status.toLowerCase()}`}>
+              {environmentalImpact.status}
+            </div>
+
+            <p>{environmentalImpact.message}</p>
+          </div>
+
+          <div className="dashboard-card">
+            <h2>
+              Social Impact
+              <InfoTooltip text="Whether your portfolio aligns with the ethical values you selected." />
+            </h2>
+
+            <div className={`impact-status ${socialImpact.status.toLowerCase()}`}>
+              {socialImpact.status}
+            </div>
+
+            <p>{socialImpact.message}</p>
+          </div>
+
           {/* AI Insights */}
 
           <div className="dashboard-card">

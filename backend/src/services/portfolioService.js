@@ -417,7 +417,7 @@ export function analyzeEnvironmentalImpact(questionnaire) {
 
     const names = positiveHoldings.map((stock) => stock.name).join(', ')
 
-    message = `Positive impact. Your portfolio includes ${names}, supporting renewable or clean energy industries.`
+    message = `Positive impact. Your portfolio includes <strong>${names}</strong>, supporting renewable or clean energy industries.`
   } else {
     status = 'Neutral'
 
@@ -471,7 +471,7 @@ export function analyzeSocialImpact(questionnaire) {
       .map((item) => `${item.category}: ${item.companies.join(', ')}`)
       .join('; ')
 
-    message = `Some of your investments may conflict with your selected values. ${summary}. You may wish to review these holdings.`
+    message = `Some of your investments may conflict with your selected values. <strong>${summary}</strong>. You may wish to review these holdings.`
   }
 
   console.log('Social impact:')

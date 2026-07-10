@@ -6,7 +6,7 @@ export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
-function HomePage() {
+export default function HomePage() {
   return (
     <main>
       {/* Hero Section */}

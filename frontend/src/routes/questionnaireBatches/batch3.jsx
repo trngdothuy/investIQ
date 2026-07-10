@@ -43,7 +43,7 @@ function getRiskProfile(score) {
   return 'Aggressive'
 }
 
-function Batch3() {
+export default function Batch3() {
   const navigate = useNavigate()
   const { answers, updateAnswers } = useQuestionnaire()
 

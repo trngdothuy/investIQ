@@ -11,7 +11,7 @@ export const Route = createFileRoute('/questionnaireBatches/batch5')({
   component: Batch5,
 })
 
-function Batch5() {
+export default function Batch5() {
   const navigate = useNavigate()
   const { answers, updateAnswers } = useQuestionnaire()
 

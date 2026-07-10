@@ -18,7 +18,7 @@ const situationOptions = [
   'Between jobs / career change',
 ]
 
-function Batch1() {
+export default function Batch1() {
   const navigate = useNavigate()
   const { answers, updateAnswers } = useQuestionnaire()
 

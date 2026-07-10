@@ -12,7 +12,8 @@
     "test": "npm run test --prefix frontend && npm run test --prefix backend"
   },
   "dependencies": {
-    "daisyui": "^5.5.23"
+    "daisyui": "^5.5.23",
+    "openai": "^6.45.0"
   },
   "devDependencies": {
     "concurrently": "^10.0.3",

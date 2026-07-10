@@ -49,15 +49,17 @@ const highlightOptions = [
   'None of these',
 ]
 
-function Batch4() {
-  const navigate = useNavigate()
-  const { updateAnswers } = useQuestionnaire()
+  function Batch4() {
+    const navigate = useNavigate()
+    const { answers, updateAnswers } = useQuestionnaire()
 
-  // FUTURE: could become "selectedCauses"
-  // const [causes, setCauses] = useState([])
+    const [exclusions, setExclusions] = useState(
+      answers.exclusions ?? []
+    )
 
-  const [exclusions, setExclusions] = useState([])
-  const [highlights, setHighlights] = useState([])
+    const [highlights, setHighlights] = useState(
+      answers.highlights ?? []
+    )
 
   function toggleExclusion(option) {
     if (option === 'None, I have no restrictions') {
@@ -90,8 +92,14 @@ function Batch4() {
   const canProceed = exclusions.length > 0 && highlights.length > 0
 
   function handleSubmit() {
-    updateAnswers({ exclusions, highlights })
-    navigate({ to: '/questionnaireBatches/batch5' })
+   updateAnswers({
+  exclusions,
+  highlights,
+
+  lastCompletedBatch: 4,
+})
+
+navigate({ to: '/questionnaireBatches/batch5' })
   }
 
   return (
@@ -102,7 +110,7 @@ function Batch4() {
       <QuestionBlock
         title="11. Are there any industries you would prefer to avoid investing in?"
         helper="We use this to ensure your portfolio aligns with your ethical preferences."
-        state={exclusions.length ? 'completed' : ''}
+        completed={exclusions.length > 0}
       >
         <div className="q-options">
           {exclusionOptions.map((option) => (
@@ -122,7 +130,7 @@ function Batch4() {
       <QuestionBlock
         title="12. Are there any categories you would like your investments to avoid violating?"
         helper="You can select up to 3 values that matter most to you."
-        state={highlights.length ? 'completed' : ''}
+        completed={highlights.length > 0}
       >
         <div className="q-options">
           {highlightOptions.map((option) => (
@@ -169,7 +177,7 @@ function Batch4() {
         </button>
 
         <button className="btn btn-primary w-full" disabled={!canProceed} onClick={handleSubmit}>
-          Next →
+          Continue →
         </button>
       </div>
     </QuestionnaireLayout>

@@ -4,13 +4,13 @@ export default function QuestionnaireLayout({ children }) {
   return (
     <div className="q-page">
       {/* Header */}
-      <header className="q-header">
+      {/* <header className="q-header">
         <div className="q-header-container">
           <Link to="/" className="q-logo">
             InvestIQ
           </Link>
         </div>
-      </header>
+      </header> */}
 
       {/* Main */}
       <main className="q-main">

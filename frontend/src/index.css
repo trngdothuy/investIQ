@@ -49,7 +49,7 @@ body {
 .hero {
   text-align: center;
   padding: 7rem 1.5rem 5rem;
-  background: radial-gradient(circle at top, #ffffff, #eef7ff);
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .badge {
@@ -227,7 +227,6 @@ nav {
   background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
-.hero,
 .dashboard {
   background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }

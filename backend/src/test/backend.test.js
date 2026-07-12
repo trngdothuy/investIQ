@@ -48,3 +48,16 @@ test('calculate the total investment for an empty portfolio returns zeros', () =
   expect(result.numberOfHoldings).toBe(0)
   expect(result.holdings).toEqual([])
 })
+
+test('calculate the total portfolio value, sums quantity * currentPrice across holdings', () => {
+  expect(calculateTotalPortfolioValue(basicPortfolio)).toBe(240)
+})
+
+test('calculate the total portfolio value for an empty portfolio returns 0', () => {
+  expect(calculateTotalPortfolioValue([])).toBe(0)
+})
+
+test('calculate the total portfolio value rounds to 2 decimal places', () => {
+  const portfolio = [{ quantity: 3, currentPrice: 1.111 }]
+  expect(calculateTotalPortfolioValue(portfolio)).toBe(3.33)
+})

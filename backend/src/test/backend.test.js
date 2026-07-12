@@ -64,20 +64,20 @@ test('calculate the total portfolio value rounds to 2 decimal places', () => {
 })
 
 //Change
-test('calculatePortfolioChange: calculates positive percentage change', () => {
+test('calculate portfolio change where it calculates positive percentage change', () => {
   expect(calculatePortfolioChange(240, 200)).toBe(20)
 })
 
-test('calculatePortfolioChange: calculates negative percentage change', () => {
+test('calculate portfolio change where it calculates negative percentage change', () => {
   expect(calculatePortfolioChange(150, 200)).toBe(-25)
 })
 
-test('calculatePortfolioChange: returns 0 when totalInvestment is 0 (avoids divide-by-zero)', () => {
+test('calculate portfolio change where it returns 0 when totalInvestment is 0 (avoids divide-by-zero)', () => {
   expect(calculatePortfolioChange(100, 0)).toBe(0)
 })
 
 //Top Holdings
-test('calculateTopHoldings: returns holdings sorted by percentage descending, top 3', () => {
+test('calculate top holdings where it returns holdings sorted by percentage descending, top 3', () => {
   const portfolio = [
     { ticker: 'A', name: 'A', quantity: 1, currentPrice: 10 },
     { ticker: 'B', name: 'B', quantity: 1, currentPrice: 50 },
@@ -92,8 +92,17 @@ test('calculateTopHoldings: returns holdings sorted by percentage descending, to
   expect(result[2].percentage).toBe('10.0%')
 })
 
-test('calculateTopHoldings: returns fewer than 3 entries if portfolio has fewer holdings', () => {
+test('calculate top holdings where it returns fewer than 3 entries if portfolio has fewer holdings', () => {
   const portfolio = [{ ticker: 'A', name: 'A', quantity: 1, currentPrice: 10 }]
   const result = calculateTopHoldings(portfolio, 10)
   expect(result).toHaveLength(1)
+})
+
+//Asset Allocation
+test('calculate asset allocation where it returns ticker and percentage of total for each stock', () => {
+  const result = calculateAssetAllocation(basicPortfolio, 240)
+  expect(result).toEqual([
+    { ticker: 'AAA', percentage: 62.5 }, // 150/240
+    { ticker: 'BBB', percentage: 37.5 }, // 90/240
+  ])
 })

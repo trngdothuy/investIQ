@@ -8,27 +8,33 @@ export const Route = createFileRoute('/about')({
 const teamMembers = [
   {
     name: 'Trang Do Thuy',
-    role: 'Team Lead & Backend Developer',
+    role: 'Team Lead & Fullstack Developer',
+    title: 'The Swiss Army Knife',
     image: '/images/team/trang.png',
-    description: 'Placeholder description.',
+    description: "Connected all the pieces by tackling full-stack development, reviewing pull requests, handling deployments, coordinating the team, and filling in wherever help was needed.",
   },
   {
     name: 'Jannah Pitogo',
-    role: 'Frontend Developer',
+    role: 'Web Developer',
+    title: 'The Research Guru',
     image: '/images/team/jannah.jpg',
-    description: 'Placeholder description.',
+    description: "Powered the backend with the application's core logic, hunted down bugs through testing and QA, and made sure our presentation looked as good as our code.",
   },
   {
     name: 'Diksha Aggarwal',
-    role: 'Aspiring Frontend developer',
+    role: 'Web Developer',
+    title: 'The Quality Detective',
     image: '/images/team/diksha.jpg',
     description:
-      'Led the development of the landing page, contributed to dashboard implementation, and performed application testing and quality assurance.',
+      "Led the development of the landing page, contributed to dashboard implementation, and performed application testing and quality assurance.",
   },
   {
     name: 'Ifeoma Osegbo',
-    role: 'Aspiring Cloud Solution Architect',
+    role: 'Web Developer',
+    title: 'The Frontend Design Wizard',
     image: '/images/team/ifeoma.PNG',
+    description:
+      "Brought the frontend to life with a user-focused and business-minded design approach, becoming the go-to expert for the questionnaire page.",
   },
 ]
 
@@ -94,6 +100,8 @@ function About() {
                     <h3>{member.name}</h3>
 
                     <p className="team-role">{member.role}</p>
+
+                    <p className="team-title">{member.title}</p>
 
                     <p className="team-description">
                       {member.description}

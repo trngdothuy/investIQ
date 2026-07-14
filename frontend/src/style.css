@@ -30,13 +30,12 @@ body {
 .hero {
   text-align: center;
   padding: 7rem 1.5rem 5rem;
-  background: radial-gradient(circle at top, #ffffff, #eef7ff);
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-
   border-radius: 999px;
 
   background: #dcfce7;
@@ -123,6 +122,8 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   gap: 1.5rem;
+
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .feature-card {
@@ -168,6 +169,8 @@ body {
   text-align: center;
 
   padding: 4rem 1.5rem 6rem;
+
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .why-section h2 {
@@ -219,7 +222,7 @@ nav {
 .testimonials-section {
   padding: 5rem 1.5rem;
   text-align: center;
-  background: linear-gradient(180deg, transparent, #f8fafc);
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .testimonials-section h2 {

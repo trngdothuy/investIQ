@@ -64,7 +64,7 @@ function QuestionnairePage() {
 
           {/* HIGHLIGHT BOX */}
           <div className="w-full max-w-md bg-blue-50 border border-blue-200 text-blue-700 rounded-xl px-6 py-4 text-sm font-medium shadow-sm">
-            5 short steps • approximately 5-7 minutes
+            5 short steps • approximately 2 - 5 minutes
           </div>
 
           {/* SUPPORT TEXT */}
@@ -73,61 +73,53 @@ function QuestionnairePage() {
           </p>
 
           {/* CTA */}
-          <div className="pt-6 flex flex-col items-center gap-4">
-            {hasSavedQuestionnaire && (
-              <div className="w-full max-w-lg rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm">
-                <h2 className="text-xl font-semibold text-emerald-700">👋 Welcome back!</h2>
-
-                <p className="mt-2 text-sm text-gray-700">
+          <div className="questionnaire-actions">
+            {hasSavedQuestionnaire ? (
+              <div className="saved-questionnaire-card">
+                <h2 className="saved-questionnaire-title">
                   {answers.name ? `Welcome back, ${answers.name}!` : 'Welcome back!'}
+                </h2>
 
-                  <br />
-
+                <p className="saved-questionnaire-message">
                   {isCompleted
                     ? 'Your investment profile is ready. You can view your dashboard or continue editing your answers.'
                     : 'We restored your saved questionnaire so you can continue where you left off.'}
                 </p>
 
                 {lastUpdated && (
-                  <p className="mt-2 text-xs text-gray-500">Last saved: {lastUpdated}</p>
+                  <p className="saved-questionnaire-date">Last saved: {lastUpdated}</p>
                 )}
 
-                <div className="mt-5">
-                  <div className="flex justify-between text-sm mb-2">
+                <div className="saved-questionnaire-progress">
+                  <div className="progress-header">
                     <span>Progress</span>
-
                     <span>{progressPercent}%</span>
                   </div>
 
-                  <progress
-                    className="progress progress-primary w-full"
-                    value={progressPercent}
-                    max="100"
-                  />
-                  <p className="mt-3 text-sm text-gray-600">
+                  <progress className="saved-progress-bar" value={progressPercent} max="100" />
+
+                  <p className="progress-status">
                     {isCompleted
                       ? '✅ Questionnaire completed'
                       : `Completed ${progress} of 5 steps`}
                   </p>
                 </div>
 
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="saved-questionnaire-buttons">
                   {isCompleted ? (
-                    <>
-                      <button
-                        className="btn btn-primary flex-1"
-                        onClick={() =>
-                          navigate({
-                            to: '/dashboard',
-                          })
-                        }
-                      >
-                        View Dashboard
-                      </button>
-                    </>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() =>
+                        navigate({
+                          to: '/dashboard',
+                        })
+                      }
+                    >
+                      View Dashboard
+                    </button>
                   ) : (
                     <button
-                      className="btn btn-primary flex-1"
+                      className="btn btn-primary"
                       onClick={() =>
                         navigate({
                           to: nextBatch,
@@ -139,7 +131,7 @@ function QuestionnairePage() {
                   )}
 
                   <button
-                    className="btn btn-outline flex-1"
+                    className="btn btn-outline"
                     onClick={() => {
                       if (
                         window.confirm(
@@ -158,12 +150,10 @@ function QuestionnairePage() {
                   </button>
                 </div>
               </div>
-            )}
-
-            {!hasSavedQuestionnaire && (
+            ) : (
               <>
                 <button
-                  className="btn btn-primary w-64"
+                  className="btn btn-primary questionnaire-start-btn"
                   onClick={() =>
                     navigate({
                       to: '/questionnaireBatches/batch0',
@@ -173,19 +163,14 @@ function QuestionnairePage() {
                   Get Started
                 </button>
 
-                <p className="text-xs text-base-content/50">
-                  You can change your answers at any time.
-                </p>
+                <p className="questionnaire-helper">You can change your answers at any time.</p>
 
-                <p className="max-w-md text-center text-xs leading-relaxed text-base-content/60">
+                <p className="questionnaire-disclaimer">
                   By continuing, you agree that InvestIQ may temporarily store your questionnaire
                   responses to personalize your experience and generate your investment profile. For
                   more information about how we collect, use, and protect your information, please
                   read our{' '}
-                  <Link
-                    to="/privacy-policy"
-                    className="text-blue-600 hover:text-blue-700 underline"
-                  >
+                  <Link to="/privacy-policy" className="policy-link">
                     Privacy Policy
                   </Link>
                   .

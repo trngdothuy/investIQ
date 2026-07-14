@@ -119,7 +119,7 @@ function PrivacyPolicy() {
 
           {/* Notice */}
           <div className="policy-notice">
-            <div className="policy-notice-icon">🛡️</div>
+            <div className="policy-notice-icon">ℹ️</div>
 
             <div>
               <h3>Important Notice</h3>
@@ -135,11 +135,7 @@ function PrivacyPolicy() {
 
           {/* Footer */}
           <div className="policy-footer">
-            <button
-              type="button"
-              className="btn btn-outline btn-wide"
-              onClick={() => window.history.back()}
-            >
+            <button type="button" className="page-back-btn" onClick={() => window.history.back()}>
               ← Back
             </button>
           </div>

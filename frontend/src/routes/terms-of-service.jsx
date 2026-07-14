@@ -122,11 +122,7 @@ function TermsOfService() {
 
           {/* Footer */}
           <div className="policy-footer">
-            <button
-              type="button"
-              className="btn btn-outline btn-wide"
-              onClick={() => window.history.back()}
-            >
+            <button type="button" className="page-back-btn" onClick={() => window.history.back()}>
               ← Back
             </button>
           </div>

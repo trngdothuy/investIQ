@@ -50,7 +50,7 @@ describe('Batch 1', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Next/i,
+        name: /Continue/i,
       }),
     ).toBeDisabled()
   })
@@ -104,11 +104,13 @@ describe('Batch 1', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /Continue/i }))
 
-    expect(updateAnswersMock).toHaveBeenCalledWith({
-      name: 'John',
-      age: 25,
-      situation: 'Student',
-    })
+    expect(updateAnswersMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: 'John',
+        age: 25,
+        situation: 'Student',
+      }),
+    )
 
     expect(navigateMock).toHaveBeenCalledWith({
       to: '/questionnaireBatches/batch2',

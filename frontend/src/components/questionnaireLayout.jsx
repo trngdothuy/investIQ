@@ -4,13 +4,13 @@ export default function QuestionnaireLayout({ children }) {
   return (
     <div className="q-page">
       {/* Header */}
-      <header className="q-header">
+      {/* <header className="q-header">
         <div className="q-header-container">
           <Link to="/" className="q-logo">
             InvestIQ
           </Link>
         </div>
-      </header>
+      </header> */}
 
       {/* Main */}
       <main className="q-main">
@@ -30,10 +30,21 @@ export default function QuestionnaireLayout({ children }) {
 
           <div className="footer-links">
             <div className="footer-column">
+              <h4>About</h4>
+
+              <Link to="/about" className="footer-link">
+                About Us
+              </Link>
+            </div>
+
+            {/* Legal */}
+            <div className="footer-column">
               <h4>Legal</h4>
+
               <Link to="/privacy-policy" className="footer-link">
                 Privacy Policy
               </Link>
+
               <Link to="/terms-of-service" className="footer-link">
                 Terms of Service
               </Link>
@@ -42,7 +53,7 @@ export default function QuestionnaireLayout({ children }) {
         </div>
 
         <div className="footer-bottom">
-          © {new Date().getFullYear()} InvestIQ. All rights reserved.
+          <p>© {new Date().getFullYear()} InvestIQ. All rights reserved.</p>
         </div>
       </footer>
     </div>

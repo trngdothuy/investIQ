@@ -36,7 +36,9 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <p className="helper-text">Takes less than 2 minutes • No financial experience required</p>
+        <p className="helper-text">
+          Takes less than 2 - 5 minutes • No financial experience required
+        </p>
       </section>
 
       {/* Features Section */}
@@ -119,7 +121,7 @@ export default function HomePage() {
         <div className="footer-container">
           {/* Brand */}
           <div className="footer-brand">
-            <h3>InvestIQ</h3>
+            <h4>InvestIQ</h4>
             <p>
               Smarter investing through clarity, education, and environmental and social impact
               awareness.
@@ -128,6 +130,16 @@ export default function HomePage() {
 
           {/* Links */}
           <div className="footer-links">
+            {/* About */}
+            <div className="footer-column">
+              <h4>About</h4>
+
+              <Link to="/about" className="footer-link">
+                About Us
+              </Link>
+            </div>
+
+            {/* Legal */}
             <div className="footer-column">
               <h4>Legal</h4>
 

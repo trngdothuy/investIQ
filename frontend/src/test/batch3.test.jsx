@@ -40,7 +40,7 @@ describe('Batch 3', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Next/i,
+        name: /Continue/i,
       }),
     ).toBeDisabled()
   })
@@ -74,7 +74,7 @@ describe('Batch 3', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Next/i,
+        name: /Continue/i,
       }),
     ).toBeEnabled()
   })
@@ -89,7 +89,7 @@ describe('Batch 3', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Next/i,
+        name: /Continue/i,
       }),
     )
 

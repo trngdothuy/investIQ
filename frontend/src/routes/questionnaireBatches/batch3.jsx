@@ -17,17 +17,17 @@ const q7Options = [
 ]
 
 const q8Options = [
-  { label: 'Very low — I prefer certainty over growth', score: 1 },
-  { label: 'Low — small fluctuations are okay', score: 2 },
-  { label: 'Medium — I can handle moderate ups and downs', score: 3 },
-  { label: "High — I'm comfortable with significant swings for higher returns", score: 4 },
+  { label: 'Very low - I prefer certainty over growth', score: 1 },
+  { label: 'Low - small fluctuations are okay', score: 2 },
+  { label: 'Medium - I can handle moderate ups and downs', score: 3 },
+  { label: "High - I'm comfortable with significant swings for higher returns", score: 4 },
 ]
 
 const q9Options = [
-  { label: 'Very uncomfortable — that level of change would stress me out', score: 1 },
-  { label: "Somewhat uncomfortable — I'd rather have steadier returns", score: 2 },
-  { label: "Neutral — I understand it's part of investing", score: 3 },
-  { label: "Comfortable — short-term swings don't bother me", score: 4 },
+  { label: 'Very uncomfortable - that level of change would stress me out', score: 1 },
+  { label: "Somewhat uncomfortable - I'd rather have steadier returns", score: 2 },
+  { label: "Neutral - I understand it's part of investing", score: 3 },
+  { label: "Comfortable - short-term swings don't bother me", score: 4 },
 ]
 
 const q10Options = [

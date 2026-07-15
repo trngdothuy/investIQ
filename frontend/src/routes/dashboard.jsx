@@ -60,7 +60,18 @@ export default function Dashboard() {
     Consumer: '#ef4444',
     Energy: '#06b6d4',
   }
-  const COLORS = ['#4f46e5', '#22c55e', '#f59e0b', '#ef4444', '#06b6d4']
+  const COLORS = [
+    '#4f46e5',
+    '#22c55e',
+    '#f59e0b',
+    '#ef4444',
+    '#06b6d4',
+    '#8b5cf6',
+    '#f97316',
+    '#e11d48',
+    '#3b82f6',
+    '#10b981',
+  ]
   const sectors = Object.entries(sectorExposure).map(([sector, value]) => ({
     sector,
     percentage: value.percentage,
@@ -246,6 +257,13 @@ export default function Dashboard() {
             </div>
 
             <p>{socialImpact.message}</p>
+            <a
+              href="https://www.ethicalconsumer.org/ethicalcampaigns/boycotts"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn more
+            </a>
           </div>
 
           <div className="dashboard-card">

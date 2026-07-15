@@ -182,7 +182,7 @@ export default function Batch5() {
     }
 
     try {
-      console.log('Backend URL:', `${import.meta.env.VITE_BACKEND_API_URL}/api/questionnaire`)
+      console.log('Backend URL:', `${import.meta.env.VITE_BACKEND_API_URL}api/questionnaire`)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/questionnaire`, {
         method: 'POST',
         headers: {

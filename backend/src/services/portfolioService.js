@@ -471,7 +471,8 @@ export function analyzeSocialImpact(questionnaire) {
       .map((item) => `${item.category}: ${item.companies.join(', ')}`)
       .join('; ')
 
-    message = `Some of your investments may conflict with your selected values. ${summary}. You may wish to review these holdings.`
+    message = `Some of your investments may conflict with your selected values: 
+    "${summary}". You may wish to review these holdings.`
   }
 
   console.log('Social impact:')

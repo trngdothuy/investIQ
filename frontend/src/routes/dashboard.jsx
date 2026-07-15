@@ -85,7 +85,14 @@ export default function Dashboard() {
           <h1>Welcome {name} 👋</h1>
           <h1>Portfolio Dashboard</h1>
           <p>Understand your investments. Make better decisions with AI-powered suggestions.</p>
-          <div className="disclaimer">⚠️ The results are for educational purposes only.</div>
+          <div className="disclaimer">
+            ⚠️ The results are for educational purposes only. Current stock information is fixed and
+            get from{' '}
+            <a href="https://edition.cnn.com/markets" target="_blank" rel="noopener noreferrer">
+              CNN
+            </a>{' '}
+            on June 26, 2026.
+          </div>
         </div>
       </div>
 
@@ -230,7 +237,7 @@ export default function Dashboard() {
 
           <div className="dashboard-card">
             <h2>
-              Social Impact
+              Social Values Alignment
               <InfoTooltip text="Whether your portfolio aligns with the ethical values you selected." />
             </h2>
 

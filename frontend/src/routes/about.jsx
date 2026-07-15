@@ -28,7 +28,7 @@ const teamMembers = [
     title: 'The Quality Detective',
     image: '/images/team/diksha.jpg',
     description:
-      'Led the front-end testing and quality assurance, contributed to the development of the landing page and dashboard page.',
+      'Led the front-end testing and quality assurance, set up the development of the landing page and contributed to the dashboard page.',
   },
   {
     name: 'Ifeoma Osegbo',

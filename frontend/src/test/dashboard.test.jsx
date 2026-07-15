@@ -186,7 +186,7 @@ describe('Dashboard', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /Social Impact/i,
+        name: /Social Values Alignment/i,
       }),
     ).toBeInTheDocument()
   })

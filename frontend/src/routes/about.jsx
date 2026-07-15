@@ -28,7 +28,7 @@ const teamMembers = [
     title: 'The Quality Detective',
     image: '/images/team/diksha.jpg',
     description:
-      'Led the front-end testing and quality assurance, contributed to the development of the landing page and dashboard page.',
+      'Owned the front-end testing and quality assurance, built the first version of the landing page, and laid the first bricks of the dashboard, setting a foundation for what came next.',
   },
   {
     name: 'Ifeoma Osegbo',
@@ -36,7 +36,7 @@ const teamMembers = [
     title: 'The Frontend Design Wizard',
     image: '/images/team/ifeoma.PNG',
     description:
-      'Brought the frontend to life with a user-focused and business-minded design approach, becoming the go-to expert for the questionnaire page.',
+      'Brought the frontend to life with a user-focused and business-minded design approach, crafted the navigation experience and became the go-to expert for the questionnaire page.',
   },
 ]
 

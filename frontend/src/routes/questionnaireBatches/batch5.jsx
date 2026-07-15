@@ -182,13 +182,16 @@ export default function Batch5() {
     }
 
     try {
-      const response = await fetch('https://investiq-backend-n3sv.onrender.com:3000/api/questionnaire', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://investiq-backend-n3sv.onrender.com:3000/api/questionnaire',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(questionnaire),
         },
-        body: JSON.stringify(questionnaire),
-      })
+      )
 
       const analysis = await response.json()
 

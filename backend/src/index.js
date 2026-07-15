@@ -10,9 +10,11 @@ const PORT = Number(process.env.PORT) || 3000
 
 // ── Middleware ──────────────────────────────────────────────────────────────
 app.use(express.json())
-app.use(cors({
-  origin: process.env.FRONTEND_URL
-}))
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  }),
+)
 
 // Allow requests from the frontend dev server
 app.use((_req, res, next) => {

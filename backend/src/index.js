@@ -18,7 +18,7 @@ app.use(
 
 // Allow requests from the frontend dev server
 app.use((_req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173')
+  res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL)
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   next()
 })

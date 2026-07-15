@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "build": "echo \"No build step needed for JS\"",
-    "start": "node src/index.js",
+    "start": "npm run migrate && node src/index.js",
     "lint": "oxlint src",
     "format": "oxfmt",
     "migrate": "dotenv -e .env -- node-pg-migrate up -m migrations",

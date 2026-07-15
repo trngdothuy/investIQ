@@ -182,7 +182,7 @@ export default function Batch5() {
     }
 
     try {
-      const response = await fetch(process.env.BACKEND_API_URL + '/api/questionnaire', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/questionnaire`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

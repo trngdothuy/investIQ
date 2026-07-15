@@ -17,10 +17,10 @@ const teamMembers = [
   {
     name: 'Jannah Pitogo',
     role: 'Web Developer',
-    title: 'The Research Guru',
+    title: 'The Solution Guru',
     image: '/images/team/jannah.jpg',
     description:
-      "Powered the backend with the application's core logic, hunted down bugs through testing and QA, and made sure our presentation looked as good as our code.",
+      "Powered the backend with the application's core logic, hunted down bugs through back-end testing and QA, enhanced the UX and kept our presentation looking sharp.",
   },
   {
     name: 'Diksha Aggarwal',
@@ -28,7 +28,7 @@ const teamMembers = [
     title: 'The Quality Detective',
     image: '/images/team/diksha.jpg',
     description:
-      'Led the development of the landing page, contributed to dashboard implementation, and performed application testing and quality assurance.',
+      'Led the front-end testing and quality assurance, contributed to the development of the landing page and dashboard page.',
   },
   {
     name: 'Ifeoma Osegbo',

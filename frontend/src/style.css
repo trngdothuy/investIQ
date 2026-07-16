@@ -468,3 +468,37 @@ nav {
 .why-section {
   padding: 5rem 1.5rem 6rem;
 }
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 2rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-column {
+    width: 100%;
+    max-width: none;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .footer-column {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom {
+    max-width: none;
+    margin: 0;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+}

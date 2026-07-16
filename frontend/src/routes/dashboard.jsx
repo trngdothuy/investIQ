@@ -386,6 +386,13 @@ export default function Dashboard() {
             </div>
 
             <p>{socialImpact.message}</p>
+            <a
+              href="https://www.ethicalconsumer.org/ethicalcampaigns/boycotts"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn more
+            </a>
           </div>
 
           {/* AI Insights */}

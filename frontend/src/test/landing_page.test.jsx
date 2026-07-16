@@ -41,22 +41,22 @@ describe('Landing Page', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders the Get Started link', () => {
+  it('renders the Get Started links', () => {
     renderPage()
 
     expect(
-      screen.getByRole('link', {
+      screen.getAllByRole('link', {
         name: /Get Started/i,
-      }),
-    ).toBeInTheDocument()
+      }).length,
+    ).toBeGreaterThan(0)
   })
 
   it('navigates to the questionnaire when Get Started is clicked', () => {
     renderPage()
 
-    const link = screen.getByRole('link', {
+    const link = screen.getAllByRole('link', {
       name: /Get Started/i,
-    })
+    })[0]
 
     expect(link).toHaveAttribute('href', '/questionnaire')
   })

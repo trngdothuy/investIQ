@@ -35,13 +35,12 @@ a {
 .hero {
   text-align: center;
   padding: 7rem 1.5rem 5rem;
-  /* background: radial-gradient(circle at top, #ffffff, #eef7ff); */
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-
   border-radius: 999px;
 
   background: #dcfce7;
@@ -128,6 +127,24 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   gap: 1.5rem;
+
+  position: relative;
+  z-index: 0;
+
+  background: none;
+}
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .feature-card {
@@ -173,6 +190,24 @@ a {
   text-align: center;
 
   padding: 4rem 1.5rem 6rem;
+
+  position: relative;
+  z-index: 0;
+
+  background: none;
+}
+
+.why-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .why-section h2 {
@@ -224,7 +259,7 @@ nav {
 .testimonials-section {
   padding: 5rem 1.5rem;
   text-align: center;
-  background: linear-gradient(180deg, transparent, #f8fafc);
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf9 50%, #ecfdf5 100%);
 }
 
 .testimonials-section h2 {
@@ -333,7 +368,7 @@ nav {
 .footer {
   background: #0f172a;
   color: #e2e8f0;
-  margin-top: 4rem;
+  margin-top: 0;
   position: relative;
   overflow: hidden;
 }
@@ -381,6 +416,18 @@ nav {
   margin-bottom: 0.5rem;
 }
 
+.footer .footer-brand p {
+  color: #ffffff;
+}
+
+.footer .footer-link {
+  color: #ffffff;
+}
+
+.footer .footer-link:hover {
+  color: #059669;
+}
+
 /* links */
 
 .footer-column button {
@@ -406,18 +453,16 @@ nav {
 
 /* bottom bar */
 .footer-bottom {
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
 
   padding: 1.5rem 2rem;
 
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
-
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #475569;
 }
 .features-section {
   padding: 5rem 1.5rem;
@@ -425,4 +470,38 @@ nav {
 
 .why-section {
   padding: 5rem 1.5rem 6rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 2rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-column {
+    width: 100%;
+    max-width: none;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .footer-column {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom {
+    max-width: none;
+    margin: 0;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
 }

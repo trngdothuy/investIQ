@@ -16,7 +16,17 @@ vi.mock('@tanstack/react-router', async () => {
 
 vi.mock('../context/questionnaireContext', () => ({
   useQuestionnaire: () => ({
-    answers: {},
+    answers: {
+      portfolio: [
+        {
+          id: '1',
+          ticker: 'AAPL',
+          name: 'Apple',
+          quantity: '10',
+          buyPrice: '150',
+        },
+      ],
+    },
     updateAnswers: updateAnswersMock,
   }),
 }))
@@ -81,14 +91,14 @@ describe('Batch 5', () => {
   beforeEach(() => {
     vi.clearAllMocks()
 
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        json: () =>
-          Promise.resolve({
-            overallScore: 82,
-          }),
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: vi.fn().mockResolvedValue({
+        overallScore: 82,
       }),
-    )
+    })
+
+    localStorage.clear()
   })
 
   it('renders the page', () => {
@@ -117,17 +127,23 @@ describe('Batch 5', () => {
   it('submits the questionnaire and navigates to dashboard', async () => {
     render(<Batch5 />)
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /View Insights/i,
-      }),
-    )
+    const button = screen.getByRole('button', {
+      name: /View Insights/i,
+    })
+
+    expect(button).toBeEnabled()
+
+    fireEvent.click(button)
 
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalled()
+      expect(global.fetch).toHaveBeenCalledTimes(1)
+    })
 
-      expect(updateAnswersMock).toHaveBeenCalled()
+    await waitFor(() => {
+      expect(updateAnswersMock).toHaveBeenCalledTimes(1)
+    })
 
+    await waitFor(() => {
       expect(navigateMock).toHaveBeenCalledWith({
         to: '/dashboard',
       })

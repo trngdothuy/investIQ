@@ -105,7 +105,7 @@ function Batch4() {
       {/* Q11 */}
       <QuestionBlock
         title="11. Are there any industries you would prefer to avoid investing in?"
-        helper="We use this to ensure your portfolio aligns with your ethical preferences."
+        helper="We use this to ensure your portfolio aligns with your ethical preferences. You can choose as many options as you want."
         completed={exclusions.length > 0}
       >
         <div className="q-options">

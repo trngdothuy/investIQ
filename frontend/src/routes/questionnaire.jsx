@@ -56,7 +56,7 @@ function QuestionnairePage() {
           </h1>
 
           {/* MAIN TEXT */}
-          <p className="text-base-content/70 text-lg leading-relaxed max-w-xl">
+          <p className="q-main-text">
             In the next five short steps, we'll learn about your goals, investing style, and current
             portfolio so we can give you personalized insights and help you make more informed
             decisions.

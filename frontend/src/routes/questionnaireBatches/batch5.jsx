@@ -13,6 +13,8 @@ export const Route = createFileRoute('/questionnaireBatches/batch5')({
 
 export default function Batch5() {
   const navigate = useNavigate()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const { answers, updateAnswers } = useQuestionnaire()
 
   const [query, setQuery] = useState('')
@@ -176,6 +178,8 @@ export default function Batch5() {
     rows.length > 0 && rows.every((r) => Number(r.quantity) > 0 && Number(r.buyPrice) > 0)
 
   async function handleFinish() {
+    setIsSubmitting(true)
+
     const questionnaire = {
       ...answers,
       portfolio: rows,
@@ -193,6 +197,21 @@ export default function Batch5() {
         },
         body: JSON.stringify(questionnaire),
       })
+
+      if (!response.ok) {
+        let serverMessage = ''
+
+        try {
+          const errorPayload = await response.json()
+          serverMessage = errorPayload?.message || errorPayload?.error || ''
+        } catch {
+          // Ignore parse errors and fall back to a generic message below.
+        }
+
+        throw new Error(
+          `${response.status}: ${serverMessage || `Server error (${response.status}).`}`,
+        )
+      }
 
       const analysis = await response.json()
 
@@ -213,7 +232,28 @@ export default function Batch5() {
       navigate({ to: '/dashboard' })
     } catch (err) {
       console.error(err)
-      alert('Something went wrong while saving your questionnaire.')
+
+      const message = err instanceof Error ? err.message : ''
+      const normalized = message.toLowerCase()
+
+      let userMessage =
+        'We could not complete your request, so the dashboard was not opened. Please try again.'
+
+      if (normalized.includes('failed to fetch') || normalized.includes('network')) {
+        userMessage =
+          'Could not connect to the server. Please make sure the backend is running, then try again.'
+      } else if (normalized.includes('400')) {
+        userMessage =
+          'Some portfolio data looks invalid. Please check quantity and buy price values, then try again.'
+      } else if (normalized.includes('500')) {
+        userMessage =
+          'The server had an internal error while generating your analysis. Please try again in a moment.'
+      } else if (message) {
+        userMessage = message
+      }
+      alert(`${userMessage}\n\nYour current entries are still on this page.`)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -228,7 +268,7 @@ export default function Batch5() {
       {/* Header */}
       <QuestionBlock
         title="13. What investments do you currently hold?"
-        helper="Search for stocks and enter quantities and buy prices."
+        helper="Search for stocks and enter quantities and buy prices. The current list is for reference only. Feel free to update it."
         completed={rows.length > 0}
       />
 
@@ -479,9 +519,26 @@ export default function Batch5() {
           disabled={!canProceed}
           onClick={handleFinish}
         >
-          View Insights →
+          {isSubmitting ? (
+            <>
+              <span className="loading loading-spinner loading-sm"></span>
+              Generating Insights...
+            </>
+          ) : (
+            'View Insights →'
+          )}
         </button>
       </div>
+
+      {isSubmitting && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 shadow-xl text-center">
+            <span className="loading loading-spinner loading-lg text-primary"></span>
+            <p className="mt-4 font-semibold">Creating your investment insights...</p>
+            <p className="text-sm opacity-60 mt-2">This may take a few moments.</p>
+          </div>
+        </div>
+      )}
     </QuestionnaireLayout>
   )
 }

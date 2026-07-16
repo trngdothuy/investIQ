@@ -11,7 +11,7 @@ export default function HomePage() {
     <main>
       {/* Hero Section */}
       <section className="hero">
-        <h1 className="font-bold text-lg text-emerald-600 hero-title">InvestIQ</h1>
+        <h1 className="hero-title gradient-text">InvestIQ</h1>
         <br />
         <div className="badge">Built for retail investors</div>
         <h1 className="hero-title">
@@ -116,6 +116,22 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="cta-section">
+        <div className="cta-content">
+          <h2>Ready to Invest Smarter?</h2>
+          <div className="hero-actions">
+            <Link to="/questionnaire" className="primary-btn">
+              Get Started →
+            </Link>
+
+            <p className="helper-text">
+              Takes less than 2 - 5 minutes • No financial experience required
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-container">

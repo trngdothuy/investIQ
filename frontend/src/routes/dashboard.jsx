@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import '../dashboard.css'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import { Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard')({
   component: Dashboard,
@@ -391,8 +392,22 @@ export default function Dashboard() {
               ))}
             </ul>
           </div>
+
         </div>
+
+        {/* Footer  */}
+          <div className="about-footer">
+            <button type="button" className="page-back-btn" onClick={() => window.history.back()}>
+              ← Back
+            </button>
+          </div>
+
+          <div className="footer-bottom-dashboard">
+          <p>© {new Date().getFullYear()} InvestIQ. All rights reserved.</p>
+        </div>
+
       </div>
+      
     </div>
   )
 }

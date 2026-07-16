@@ -452,12 +452,10 @@ nav {
 
   padding: 1.5rem 2rem;
 
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
-
   font-size: 0.9rem;
   color: #475569;
 }

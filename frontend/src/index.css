@@ -451,14 +451,15 @@ nav {
 }
 
 /* bottom bar */
-.footer-bottom {
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+.footer-bottom-dashboard {
+  /* border-top: 1px solid rgba(148, 163, 184, 0.2); */
   padding: 1.5rem 2rem;
 
   display: grid;
   place-items: center;
-
   width: 100%;
+   font-size: 0.9rem;
+  color: #475569;
 }
 
 .footer-bottom p {

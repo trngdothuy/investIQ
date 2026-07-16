@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import '../dashboard.css'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts'
-import { Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard')({
   component: Dashboard,
